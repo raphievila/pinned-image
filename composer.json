@@ -19,7 +19,7 @@
             "raphievila\\PinnedImage\\": ""
         },
         "classmap": [
-            "src/assets/controller"
+            "src/assets/controllers"
         ]
     },
     "config": {
