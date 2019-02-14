@@ -1,0 +1,238 @@
+/**
+ * @author Rafael Vila <rvila@revolutionvisualarts.com>
+ * @version 1.0.1v
+ */
+.pinned-image {
+  position: absolute;
+  display: block;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  z-index: 1;
+  margin: auto; }
+.pinned-point, .pinned-point-center, .pinned-point-center-left, .pinned-point-center-right, .pinned-point-top, .pinned-point-top-right, .pinned-point-bottom, .pinned-point-bottom-right {
+  position: absolute;
+  display: block;
+  top: 0%;
+  left: 0%;
+  z-index: 2; }
+  .pinned-point-label {
+    position: absolute;
+    background-color: #cccc00;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    z-index: 3;
+    overflow: hidden;
+    cursor: pointer;
+    user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    -webkit-user-select: none;
+    /*
+    transform: translate(-50%, -50%);
+    transform-origin: center center;
+    */ }
+    .pinned-point-label > span {
+      position: absolute;
+      padding: 0;
+      margin: 0;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 28px;
+      font-weight: bold; }
+    .pinned-point-label-text {
+      width: auto;
+      height: auto;
+      border-radius: 10px;
+      padding: 10px; }
+      .pinned-point-label-text > span {
+        position: relative;
+        transform: none;
+        white-space: nowrap;
+        top: 0;
+        left: 0;
+        font-size: 18px; }
+  .pinned-point-title {
+    display: block;
+    font-size: 18px;
+    background-color: yellow;
+    color: black;
+    text-align: center; }
+  .pinned-point-banner {
+    display: block;
+    font-size: 12px;
+    color: gray;
+    padding: 10px; }
+  .pinned-point-tip {
+    transition: width 0.3s ease-in-out, height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 0px;
+    height: 0px;
+    padding: 0;
+    margin: 0;
+    background-color: white;
+    border-radius: 10px;
+    opacity: 0;
+    overflow: hidden;
+    z-index: 2; }
+    .pinned-point-tip.expanded {
+      transition: width 0.3s ease-in-out, height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+      opacity: 1;
+      width: 400px;
+      height: 200px; }
+    .pinned-point-tip-sticker {
+      width: 400px;
+      height: auto; }
+  .pinned-point-center {
+    transform-origin: center center; }
+    .pinned-point-center-left {
+      transform-origin: center left; }
+    .pinned-point-center-right {
+      transform-origin: center right; }
+  .pinned-point-top {
+    transform-origin: top left; }
+    .pinned-point-top-right {
+      transform-origin: top right; }
+  .pinned-point-bottom {
+    transform-origin: bottom left; }
+    .pinned-point-bottom-right {
+      transform-origin: bottom right; }
+.pinned-focus {
+  z-index: 5; }
+.pinned-container, .pinned-container-full {
+  position: relative;
+  display: block;
+  padding-top: 56.25%;
+  background-color: black;
+  overflow: hidden; }
+  .pinned-container.r215, .r215.pinned-container-full {
+    padding: 23.8%; }
+  .pinned-container.r219, .r219.pinned-container-full {
+    padding-top: 42.86%; }
+  .pinned-container.r189, .r189.pinned-container-full {
+    padding-top: 50%; }
+  .pinned-container.r169, .r169.pinned-container-full {
+    padding-top: 56.25%; }
+  .pinned-container.r32, .r32.pinned-container-full {
+    padding-top: 66.6%; }
+  .pinned-container.r43, .r43.pinned-container-full {
+    padding-top: 75%; }
+  .pinned-container-full {
+    overflow: hidden; }
+    .pinned-container-full > .pinned-point-label {
+      position: absolute;
+      top: 0;
+      left: 0; }
+    .pinned-container-full > .pinned-point-title, .pinned-container-full > .pinned-point-banner {
+      width: 100%;
+      min-width: 100%; }
+    .pinned-container-full > .pinned-point-tip {
+      position: absolute;
+      transition: bottom 0.3s ease-in-out;
+      width: auto;
+      min-height: 200px;
+      top: auto;
+      right: 20px;
+      bottom: -100%;
+      left: 20px;
+      border-radius: 10px 10px 0 0;
+      overflow: hidden; }
+      .pinned-container-full > .pinned-point-tip .closeBtn {
+        position: absolute;
+        display: block;
+        top: 5px;
+        right: 5px;
+        color: black;
+        font-weight: bold;
+        width: 20px;
+        height: 20px;
+        padding-top: 5px;
+        cursor: pointer;
+        z-index: 4; }
+        .pinned-container-full > .pinned-point-tip .closeBtn > span {
+          display: block;
+          transform-origin: 7px;
+          content: '';
+          width: 20px;
+          height: 4px;
+          background-color: gray;
+          border-radius: 4px; }
+          .pinned-container-full > .pinned-point-tip .closeBtn > span.closeOne {
+            transform: rotate(45deg); }
+          .pinned-container-full > .pinned-point-tip .closeBtn > span.closeTwo {
+            transform: rotate(-45deg); }
+      .pinned-container-full > .pinned-point-tip > .pinned-point-tip-sticker {
+        width: 100%; }
+      .pinned-container-full > .pinned-point-tip.expanded {
+        bottom: 0; }
+    .pinned-container-full[data-template="topload"] > .pinned-point-tip {
+      position: absolute;
+      transition: top 0.3s ease-in-out;
+      width: auto;
+      height: auto;
+      min-height: 200px;
+      top: -100%;
+      right: 20px;
+      bottom: auto;
+      left: 20px;
+      margin: 0;
+      border-radius: 0 0 10px 10px; }
+      .pinned-container-full[data-template="topload"] > .pinned-point-tip.expanded {
+        top: 0; }
+    .pinned-container-full[data-template="leftload"] > .pinned-point-tip {
+      position: absolute;
+      transition: left 0.3s ease-in-out, top 0.3s ease-in-out, bottom 0.3s ease-in-out;
+      width: 50%;
+      height: auto;
+      top: 20px;
+      right: auto;
+      bottom: 20px;
+      left: -100%;
+      border-radius: 0 10px 10px 0; }
+      .pinned-container-full[data-template="leftload"] > .pinned-point-tip.expanded {
+        transition: left 0.3s ease-in-out, top 0.3s ease-in-out, bottom 0.3s ease-in-out;
+        top: 10px;
+        bottom: 10px;
+        left: 0; }
+    .pinned-container-full[data-template="rightload"] > .pinned-point-tip {
+      position: absolute;
+      transition: right 0.3s ease-in-out, top 0.3s ease-in-out, bottom 0.3s ease-in-out;
+      width: 50%;
+      height: auto;
+      top: 20px;
+      right: -100%;
+      bottom: 20px;
+      left: auto;
+      border-radius: 10px 0 0 10px; }
+      .pinned-container-full[data-template="rightload"] > .pinned-point-tip.expanded {
+        transition: right 0.3s ease-in-out, top 0.3s ease-in-out, bottom 0.3s ease-in-out;
+        top: 10px;
+        bottom: 10px;
+        right: 0; }
+    .pinned-container-full.r215 {
+      padding: 23.8%; }
+    .pinned-container-full.r219 {
+      padding-top: 42.86%; }
+    .pinned-container-full.r189 {
+      padding-top: 50%; }
+    .pinned-container-full.r169 {
+      padding-top: 56.25%; }
+    .pinned-container-full.r32 {
+      padding-top: 66.6%; }
+    .pinned-container-full.r43 {
+      padding-top: 75%; }
+
+/*# sourceMappingURL=main.css.map */

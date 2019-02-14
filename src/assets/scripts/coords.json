@@ -1,0 +1,22 @@
+[
+    {
+        "id": "PointOne",
+        "label": 1,
+        "title": "Pinned One",
+        "tip": "First pinned point on map",
+        "uri": "#",
+        "class": "extra classes",
+        "x": 25,
+        "y": 8
+    },
+    {
+        "id": "PointTwo",
+        "label": 2,
+        "title": "Pinned Two",
+        "tip": "Second pinned point on map",
+        "uri": "#",
+        "class": "extra classes",
+        "x": 40,
+        "y": 9
+    }
+]

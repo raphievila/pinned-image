@@ -1,0 +1,33 @@
+{
+    "name": "raphievila/pinned-image",
+    "description": "A new advance image mapping system that allows to pin an images with animated help tips by user interaction",
+    "type": "composer-plugin",
+    "require": {
+        "raphievila/utils": "dev-master",
+        "php": "^5.3 || ^7.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rafael Vila",
+            "email": "rvila@revolutionvisualarts.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "PinnedImage\\": "src/assets/controllers",
+            "raphievila\\PinnedImage\\": ""
+        },
+        "classmap": [
+            "src/assets/controller"
+        ]
+    },
+    "config": {
+        "github-protocols": [
+            "git",
+            "https",
+            "http"
+        ]
+    },
+    "minimum-stability": "dev"
+}

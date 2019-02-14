@@ -1,0 +1,22 @@
+[
+    {
+        "id": "PointOne",
+        "label": "P1",
+        "title": "Custom Coordinate One",
+        "tip": "Testing adding reference to dynamic configuration json files",
+        "uri": "#",
+        "class": "pinned-point-label-text",
+        "x": 22.2,
+        "y": 4.5
+    },
+    {
+        "id": "PointTwo",
+        "label": "P2",
+        "title": "Custom Coordinate Two",
+        "tip": "If you are seen this, then dynamic config is working",
+        "uri": "#",
+        "class": "pinned-point-label-text",
+        "x": 57.9,
+        "y": 8
+    }
+]

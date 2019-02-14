@@ -1,0 +1,254 @@
+/**
+ * @author Rafael Vila <rvila@revolutionvisualarts.com>
+ * @version 1.0.1v
+ */
+
+@import 'inc/inc';
+
+.pinned {
+    &-image {
+        position: absolute;
+        display: block;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 100%;
+        z-index: 1;
+        margin: auto;
+    }
+
+    &-point {
+        position: absolute;
+        display: block;
+        top: 0%;
+        left: 0%;
+        z-index: 2;
+
+        &-label {
+            position: absolute;
+            background-color: darken(yellow, 10);
+            top: 0;
+            left: 0;
+            width: 40px;
+            height: 40px;
+            border-radius: 100%;
+            z-index: 3;
+            overflow: hidden;
+            cursor: pointer;
+            @include cross-vendor(user-select, none);
+            /*
+            transform: translate(-50%, -50%);
+            transform-origin: center center;
+            */
+
+            & > span {
+                position: absolute;
+                padding: 0;
+                margin: 0;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font: {
+                    size: 28px;
+                    weight: bold;
+                }
+            }
+
+            &-text {
+                width: auto;
+                height: auto;
+                border-radius: 10px;
+                padding: 10px;
+
+                & > span {
+                    position: relative;
+                    transform: none;
+                    white-space: nowrap;
+                    top: 0;
+                    left: 0;
+                    font-size: 18px;
+                }
+            }
+        }
+
+        &-title {
+            display: block;
+            font-size: 18px;
+            background-color: yellow;
+            color: black;
+            text-align: center;
+        }
+
+        &-banner {
+            display: block;
+            font-size: 12px;
+            color: gray;
+            padding: 10px;
+        }
+
+        &-tip {
+            transition: width 0.3s ease-in-out, height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 0px;
+            height: 0px;
+            padding: 0;
+            margin: 0;
+            background: {
+                color: white;
+            }
+            border: {
+                radius: 10px;
+            }
+            opacity: 0;
+            overflow: hidden;
+            z-index: 2;
+
+            &.expanded {
+                transition: width 0.3s ease-in-out, height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+                opacity: 1;
+                width: 400px;
+                height: 200px;
+            }
+
+            &-sticker {
+                width: 400px;
+                height: auto;
+            }
+        }
+
+        &-center {
+            @extend .pinned-point;
+            transform-origin: center center;
+
+            &-left {
+                @extend .pinned-point;
+                transform-origin: center left;
+            }
+
+            &-right {
+                @extend .pinned-point;
+                transform-origin: center right;
+            }
+        }
+
+        &-top {
+            @extend .pinned-point;
+            transform-origin: top left;
+
+            &-right {
+                @extend .pinned-point;
+                transform-origin: top right;
+            }
+        }
+
+        &-bottom {
+            @extend .pinned-point;
+            transform-origin: bottom left;
+
+            &-right {
+                @extend .pinned-point;
+                transform-origin: bottom right;
+            }
+        }
+    }
+
+    &-focus {
+        z-index: 5;
+    }
+    
+    &-container {
+        position: relative;
+        display: block;
+        padding-top: 56.25%;
+        background: {
+            color: black;
+        }
+        overflow: hidden;
+
+        @include ratios();
+
+        &-full {
+            @extend .pinned-container;
+            overflow: hidden;
+
+            & > .pinned {
+                &-point {
+                    &-label {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                    }
+
+                    &-title, &-banner {
+                        width: 100%;
+                        min-width: 100%;
+                    }
+
+                    &-tip {
+                        position: absolute;
+                        transition: bottom 0.3s ease-in-out;
+                        width: auto;
+                        min-height: 200px;
+                        top: auto;
+                        right: 20px;
+                        bottom: -100%;
+                        left: 20px;
+                        border-radius: 10px 10px 0 0;
+                        overflow: hidden;
+
+                        & .closeBtn {
+                            position: absolute;
+                            display: block;
+                            top: 5px;
+                            right: 5px;
+                            color: black;
+                            font-weight: bold;
+                            width: 20px;
+                            height: 20px;
+                            padding-top: 5px;
+                            cursor: pointer;
+                            z-index: 4;
+
+                            & > span {
+                                display: block;
+                                transform-origin: 7px;
+                                content: '';
+                                width: 20px;
+                                height: 4px;
+                                background-color: gray;
+                                border-radius: 4px;
+
+                                &.closeOne {
+                                    transform: rotate(45deg);
+                                }
+
+                                &.closeTwo {
+                                    transform: rotate(-45deg);
+                                }
+                            }
+                        }
+
+                        & > .pinned-point-tip-sticker {
+                            width: 100%;
+                        }
+
+                        &.expanded {
+                            bottom: 0;
+                        }
+                    }
+                }
+            }
+
+            @include templates();
+
+            @include ratios();
+        }
+    }
+
+}  
