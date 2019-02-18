@@ -121,6 +121,17 @@ If this has been implemented properly your code should look something like this:
 </body>
 </html>
 ```
+Also, you need to set two globals required by the `pinned-image.js` that are set to prepare for a coming Auto Load feature not yet implemented. Set these right before embedding the `pinned-image.js` as follow:
+
+```html
+    <script type="text/javascript">
+        'use strict';
+        var AUTOLOAD = false,
+            MYCOORDS = false;
+    </script>
+    <script type="text/javascript" src="location/of/your/script/library/pinned-image.js"></script>
+```
+**Note**: To avoid getting console errors and not wanting to set these globals all the them, add them to the `pinned-image.js` file.
 
 ## Using PinnedImage Class (PHP)
 
