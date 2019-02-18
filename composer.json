@@ -1,7 +1,7 @@
 {
     "name": "raphievila/pinned-image",
     "description": "A new advance image mapping system that allows to pin an images with animated help tips by user interaction",
-    "type": "composer-plugin",
+    "type": "library",
     "require": {
         "raphievila/utils": "dev-master",
         "php": "^5.3 || ^7.0"
