@@ -131,7 +131,7 @@ Also, you need to set two globals required by the `pinned-image.js` that are set
     </script>
     <script type="text/javascript" src="location/of/your/script/library/pinned-image.js"></script>
 ```
-**Note**: To avoid getting console errors and not wanting to set these globals all the them, add them to the `pinned-image.js` file.
+**Note**: To avoid getting console errors and not wanting to set these globals all the time, you can add them as editable globals in the `pinned-image.js` file.
 
 ## Using PinnedImage Class (PHP)
 
