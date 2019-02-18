@@ -29,6 +29,7 @@ ___
 | :--- | :---: | :---: | :--- |
 | `containerClass` | String | pinned-container | `pinned-container-full` |
 | `containerRatio` | Number | 169 | `32, 43, 169, 1610, 189, 215, 219` |
+
 Container ratios are based on most popular standard ratios example:
 | ratio | format | use | Example of Use |
 | :--- | :--- | :---: | :--- |
