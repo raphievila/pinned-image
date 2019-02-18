@@ -25,12 +25,14 @@ ___
 ___
 
 ## Container Modifiers
+
 | key |	value format | default | options |
 | :--- | :---: | :---: | :--- |
 | `containerClass` | String | pinned-container | `pinned-container-full` |
 | `containerRatio` | Number | 169 | `32, 43, 169, 1610, 189, 215, 219` |
 
 Container ratios are based on most popular standard ratios example:
+
 | ratio | format | use | Example of Use |
 | :--- | :--- | :---: | :--- |
 | `3:2` | Landscape | 32 | Surface, Macbook Pro |
@@ -39,6 +41,7 @@ Container ratios are based on most popular standard ratios example:
 | `18:9` | Wide Angle | 189 | Samsung S8, S9, Note 8, Note 9 and iPhone X |
 | `21:9` | Extra Wide | 219 | Curved Monitors |
 ___
+
 To use your custom ratio, check [Styling PinnedImages](Styling.md). Also available:
 * 5:4 (54)
 * 16:10 (1610)
