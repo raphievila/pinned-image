@@ -1,41 +1,49 @@
 # Parameters Configurations <!-- omit in toc -->
 
 - [Parameters for `PinnedImage` Class](#parameters-for-pinnedimage-class)
-	- [Required Parameters](#required-parameters)
-	- [Container Manipulation](#container-manipulation)
-	- [Full Template Options](#full-template-options)
-	- [Custom Pin List JSON File](#custom-pin-list-json-file)
-	- [To Load Parameters](#to-load-parameters)
-		- [Method One](#method-one)
-		- [Method Two](#method-two)
-	- [For Debugging](#for-debugging)
+  - [Required Parameters](#required-parameters)
+  - [Container Modifiers](#container-modifiers)
+  - [Full Template Options](#full-template-options)
+  - [No Script Options / Legend](#no-script-options--legend)
+  - [Custom Pin List JSON File](#custom-pin-list-json-file)
+  - [To Load Parameters](#to-load-parameters)
+    - [Method One](#method-one)
+    - [Method Two](#method-two)
+  - [For Debugging](#for-debugging)
 - [Parameters for Pin List JSON File](#parameters-for-pin-list-json-file)
-	- [Required Parameters](#required-parameters-1)
-	- [Optinal Parameters](#optinal-parameters)
-	- [Pin List JSON Example](#pin-list-json-example)
+  - [Required Parameters](#required-parameters-1)
+  - [Optional Parameters](#optional-parameters)
+  - [Pin List JSON Example](#pin-list-json-example)
 ___
 # Parameters for `PinnedImage` Class
 ## Required Parameters
 | key |	value format | default | options |
 | :--- | :---: | :---: | :--- |
+| `containerID` | String | PinnedImage | ID of container - modify if multiple containers are used |
 | `imageURL` | String | null | Images url is required |
 | `imageALT` | Number | null | Required by Screen Readers |
 ___
 
-## Container Manipulation
+## Container Modifiers
 | key |	value format | default | options |
 | :--- | :---: | :---: | :--- |
 | `containerClass` | String | pinned-container | `pinned-container-full` |
-| `containerRatio` | Number | 169 | `32, 43, 169, 189, 215, 219` |
-Container ratios are based on standard ratios example:
+| `containerRatio` | Number | 169 | `32, 43, 169, 1610, 189, 215, 219` |
+Container ratios are based on most popular standard ratios example:
 | ratio | format | use | Example of Use |
 | :--- | :--- | :---: | :--- |
 | `3:2` | Landscape | 32 | Surface, Macbook Pro |
 | `4:3` | Standard | 43 | Monitors, Old TVs |
 | `16:9` | Widescreen | 169 | Monitors, Most HDTVs and Flat Screens |
 | `18:9` | Wide Angle | 189 | Samsung S8, S9, Note 8, Note 9 and iPhone X |
-| `21:5` | Extra Wide | 215 | Curved Monitors |
-To use your custom ratio, check [Styling PinnedImages](https://github.com/raphievila/wiki/Styling/).
+| `21:9` | Extra Wide | 219 | Curved Monitors |
+___
+To use your custom ratio, check [Styling PinnedImages](Styling.md). Also available:
+* 5:4 (54)
+* 16:10 (1610)
+* 21:5 (215)
+
+For the moment only landscape orientation. I might add portrait orientation if requested.
 ___
 
 ## Full Template Options
@@ -44,15 +52,24 @@ ___
 | `loadOrientation` | String | bottomload | `topload, leftload, rightload` |
 ___
 
+## No Script Options / Legend
+| key |	value format | default |options |
+| :--- | :--- | :--- | :--- |
+| `ignoreNoScript` | Boolean | `false` | set to `true` to completely remove &lt;noscript/&gt; tag and its content. |
+| `forceLegend` | Boolean | `false` | set to `true` to always show the legend, `ignoreNoScript` has to stay `false` for this to work. |
+___
+
 ## Custom Pin List JSON File
 | key |	value format | default |options |
 | :--- | :--- | :--- | :--- |
-| `myCoords` | URL | null | To use different coordination JSON file, have to point to a JSON file |
+| `myCoords` | URL | null | To use different pin list this have to point to a properly formatted [JSON](https://json.org) file |
+| `ignoreNoScript` | Boolean | `false` | `true`, 1 - To remove noscript option from the rendering output |
 ___
 When left blank, the class will use the default pin list JSON file located on
 ```shell
-$ > /pinned-images/src/assets/scripts/coords.json
+$ > .../raphievila/pinned-images/src/assets/scripts/coords.json
 ```
+The above depends where your Composer files are located.
 
 ## To Load Parameters
 To load parameters to render `PinnedImage::render` method you can do this in two different way:
@@ -96,14 +113,14 @@ echo $pi->render();
 ```
 
 ## For Debugging
-If you want to test that the parameters sent are being processed correctly you can use `PinnedImage::check_loaded_parameters` method.
+To make sure or test the parameters set are being processed correctly use `PinnedImage::check_loaded_parameters` method.
 ```php
 var_dump($pi->check_loaded_parameters());
 ```
 Need help? [Contact me here](mailto:rvila@revolutionvisualarts.com)
 
 # Parameters for Pin List JSON File
-JSON file require to be in proper formatting or it will not be parsed. For more information check [JSON official website](http://json.org/).
+`JSON` file require to be in proper formatting or it will not be parsed. For more information check [JSON official website](http://json.org/).
 
 ## Required Parameters
 | key |	value format | description |
@@ -114,7 +131,7 @@ JSON file require to be in proper formatting or it will not be parsed. For more 
 | `y` | Number | Vertial origin location (Top to Bottom) |
 ___
 
-## Optinal Parameters
+## Optional Parameters
 | key |	value format | description |
 | :--- | :---: | :--- |
 | `class` | String | Available to allow custom styling using [CSS](http://www.w3.org/Style/CSS/Overview.en.html) |

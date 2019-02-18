@@ -18,15 +18,33 @@ use Utils\Utils;
 
 class PinnedImage
 {
+    //Container Modifiers
+    private static $containerID = 'PinnedImage';
     private static $containerRatio = false;
-    private static $imageURL = '';
-    private static $imageALT = 'Pinned Image &copy;2019';
-    private static $myCoords = false;
     private static $containerClass = 'pinned-container';
     private static $loadOrientation = false;
+    //Image Modifiers
+    private static $imageURL = '';
+    private static $imageALT = 'PinnedImage &copy;2019 Revolution Visual Arts';
+    //Data Modifiers
+    private static $ignoreNoScript = false;
+    private static $forceLegend = false;
+    private static $myCoords = false;
+    //Do not change
     private static $data;
     private static $u;
-    private static $allowed = array('containerRatio', 'containerClass', 'imageURL', 'imageALT', 'loadOrientation', 'myCoords');
+    private static $allowed = array(
+        'containerClass',
+        'containerID',
+        'containerRatio',
+        'forceLegend',
+        'ignoreNoScript',
+        'imageURL',
+        'imageALT',
+        'loadOrientation',
+        'myCoords',
+    );
+    private static $noscriptSet = false;
 
     public function __construct($params = false)
     {
@@ -40,9 +58,27 @@ class PinnedImage
 
     private static function __load_parameters($params)
     {
-        foreach ($params as $k => $v) {
-            if (in_array($k, self::$allowed)) {
-                self::${$k} = htmlspecialchars($v);
+        $defaults = array(
+            'containerID' => 'PinnedImage',
+            'containerRatio' => 169,
+            'containerClass' => 'pinned-container',
+            'forceLegend' => false,
+            'ignoreNoScript' => false,
+            'imageURL' => false,
+            'imageALT' => 'PinnedImage &copy;2019 Revolution Visual Arts',
+            'loadOrientation' => false,
+            'myCoords' => false,
+        );
+
+        if (is_object($params)) {
+            $params = (array) $params;
+        }
+
+        foreach ($defaults as $k => $v) {
+            if (!isset($params[$k])) {
+                self::${$k} = $v;
+            } elseif (isset($params[$k]) && in_array($k, self::$allowed)) {
+                self::${$k} = htmlspecialchars($params[$k]);
             }
         }
 
@@ -65,7 +101,7 @@ class PinnedImage
 
         //Verifying file was not removed accidentally :S
         if (!file_exists($jsonlocation)) {
-            throw new Exception('Unable to find configuration data. Please create new JSON file under /src/assets/scripts/coords.json or make sure URL provided is correct', 500);
+            throw new \Exception('Unable to find configuration data. Please create new JSON file under /src/assets/scripts/coords.json or make sure URL provided is correct', 500);
         }
 
         $json = file_get_contents($jsonlocation);
@@ -112,11 +148,19 @@ class PinnedImage
             $extraClass = (isset($info->class)) ? ' '.htmlspecialchars($info->class) : '';
             $setCoords = ($fullTemplate) ? $coords : '';
             $labelRel = ($fullTemplate) ? ',rel:'.$setID : '';
-            $label = $x->a($x->span(htmlspecialchars($info->label)), 'class:pinned-point-label'.$extraClass.$labelRel.$setCoords);
+            $label = htmlspecialchars($info->label);
+            $labelXML = $x->a($x->span($label), 'class:pinned-point-label'.$extraClass.$labelRel.$setCoords);
 
             //Setting Tip
+            $tipText = (isset($info->tip)) ? htmlspecialchars($info->tip) : false;
+
+            //required value have to be set, if not new to throw exception
+            if (!$tipText) {
+                throw new \Exception('Parameter <code>tip</code> not set on Pin List. Tip explanation have to be set, check the Parameters documentation.', 500);
+            }
+
             $title = (isset($info->title)) ? $x->h3(htmlspecialchars($info->title), 'class:pinned-point-title') : '';
-            $sticker = (isset($info->tip)) ? $x->p(htmlspecialchars($info->tip), 'class:pinned-point-banner') : '';
+            $sticker = ($tipText) ? $x->p($tipText, 'class:pinned-point-banner') : '';
             $tipID = ($fullTemplate) ? ',id:'.$setID : '';
             $button = (isset($info->url) && filter_var($info->url, FILTER_VALIDATE_URL))
                 ? $x->a(htmlspecialchars($info->url), 'class:pinned-point-button btn btn-primary')
@@ -124,17 +168,53 @@ class PinnedImage
             $tip = $x->div($x->div($title.$sticker.$button, 'class:pinned-point-tip-sticker'), 'class:pinned-point-tip'.$tipID);
 
             $pin[] = (!$fullTemplate)
-                ? $x->div($label.$tip, 'class:pinned-point,id:'.$x->processText($setID).$coords)
-                : $label.$tip;
+                ? $x->div($labelXML.$tip, 'class:pinned-point,id:'.$x->processText($setID).$coords)
+                : $labelXML.$tip;
+
+            self::$noscriptSet[$label] = $tipText;
         }
 
         return (count($pin) > 0) ? join("\r", $pin) : false;
+    }
+
+    public static function no_script_object()
+    {
+        return self::$noscriptSet;
+    }
+
+    private static function __process_noscript_legend($containerID)
+    {
+        $x = new xTags();
+        $tipList = array();
+        $noscriptItem = false;
+        $list = self::$noscriptSet;
+
+        if (!self::$u->isMap($list) || (self::$u->isMap($list) && count($list) === 0)) {
+            throw new \Exception('List sent not properly formatted, make sure is a map or array', 500);
+        }
+
+        foreach ($list as $label => $tip) {
+            //Setting up flex items
+            $labelTag = $x->div($label, 'class:pinned-flex-item w5 text-center');
+            $tipTag = $x->div($tip, 'class:pinned-flex-item w95');
+            //Setting up flex row
+            $tipList[] = $x->div($labelTag.$tipTag, 'class:pinned-flex-row,');
+        }
+
+        if (count($tipList) > 0) {
+            $noscriptItem = $x->div(join("\r", $tipList), 'class:pinned-flex-column p-2,id:'.$containerID.'-legend,rel:'.$containerID);
+        }
+
+        self::$noscriptSet = array();
+
+        return $noscriptItem;
     }
 
     public static function render()
     {
         $x = new xTags();
         $imageURL = self::$imageURL;
+        $noScript = '';
 
         if (empty($imageURL) || (is_bool($imageURL))) {
             throw new \Exception('Requires image location, has to be a proper URL format', 500);
@@ -148,6 +228,11 @@ class PinnedImage
         //GET RENDERED PINS;
         $pins = self::_render_pins_as_html();
 
-        return $x->div($img.$pins, 'class:'.htmlspecialchars(self::$containerClass).$ratio.$load);
+        if (!self::$ignoreNoScript) {
+            $noScriptHTML = self::__process_noscript_legend(self::$containerID);
+            $noScript = (!self::$forceLegend) ? $x->noscript($noScriptHTML) : $x->div($noScriptHTML, 'class:pinned-legend');
+        }
+
+        return $x->div($img.$pins, 'id:'.htmlspecialchars(self::$containerID).',class:'.htmlspecialchars(self::$containerClass).$ratio.$load).$noScript;
     }
 }

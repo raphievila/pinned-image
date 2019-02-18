@@ -81,6 +81,7 @@
             background-color: yellow;
             color: black;
             text-align: center;
+            line-height: 40px;
         }
 
         &-banner {
@@ -251,4 +252,44 @@
         }
     }
 
-}  
+    &-flex {
+        position: relative;
+        display: flex;
+        align-items: stretch;
+        justify-content: stretch;
+        flex-wrap: nowrap;
+
+        &-column {
+            @extend .pinned-flex;
+            flex-direction: column;
+        }
+
+        &-row {
+            @extend .pinned-flex;
+
+            &:nth-child(odd) {
+                background-color: rgba(black, 0.15);
+            }
+        }
+
+        &-item {
+            flex: 1 10%;
+
+            &.w {
+                @for $i from 1 through 20 {
+                    $wsetdigit: $i * 5;
+                    $wsetpercent: $wsetdigit * 1%;
+                    $wsetlabel: unquote('&' + $wsetdigit);
+
+                    #{$wsetlabel} {
+                        max-width: $wsetpercent;
+                    }
+                }
+            }
+
+            &:first-child {
+                font-weight: bold;
+            }
+        }
+    }
+}

@@ -14,7 +14,21 @@
 
 `PinnedImage` purpose is to create a more friendly responisive image mapping simulating a pinned map mechanism, but with any image. My main goal is to add functionalities and capabilities, but for now, will do basic functionalities.
 
-I'm still debating if should implement JavaScript for interaction and animation, for the moment, all animations will be handle for Cascade Stylesheet methods and rules.
+I'm still debating if should implement JavaScript for interaction and animation, for the moment, all animations will be handle for Cascade Stylesheet methods and rules, and interactions through JavaScript.
+
+If JavaScript is disable a legend will be added under the **`.pinned-container`** DOM division. My suggestion would be for you to set the container inside a container you can control and won't break your template's look when on mobile between the, legend will be posted between a `noscript` tag.
+
+```html
+<div id="myPinnedImage" class="pinned-container">...</div>
+<noscript>
+    <div id="PinOne-legend" class="pinned-flex">
+        <div class="pinned-flex-row">
+            <div class="pinned-flex-item-key">...</div>
+            <div class="pinned-flex-item-value">...</div>
+        </div>
+    </div>
+</noscript>
+```
 
 ### Note For Developers
 
@@ -106,7 +120,7 @@ $pi = new PinnedImage($params);
 
 For a full list of parameters visit [raphievila/pinned-image/wiki/Parameters](https://github.com/raphievila/pinned-image/wiki/Parameters).
  
-As usual, when you use a reusable code is because you probably need to use it multiple times at time, for this you need to use the `reload` method.
+As usual, when you use a reusable code is because you probably need to use it multiple times at a time, for this you need to use the `reload` method.
 
 ### Renderign as HTML
 
@@ -184,7 +198,7 @@ For now the containerClass parameter can only be `pinned-container` (default) or
 ## TODO
 Things I need to do and will be added shortly:
 1. Ajax requested PinnedImage render.
-2. Automatic localization for tip blocks depending on corner proximity.
+2. Automatic localization adjustment for tip blocks depending on corner proximity.
 3. Color Coded Themes.
 4. Pin Icons.
 5. The ability to create custom pins.

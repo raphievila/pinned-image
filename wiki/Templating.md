@@ -22,7 +22,7 @@ Depending what you are trying to accomplish any of these templates might be hand
 ## Default Template
 To use the default template you do not need to do anything, this would be the default state of the rendering.
 
-The default templates shows pins on top of your image depending of the cooridnates provided on the pin list JSON file. See the ReadMe.md file for more information.
+The default template shows pins on top of your image depending of the cooridnates provided on the pin list JSON file. See the [Read Me Documentation](../ReadMe.md) file for more information.
 
 When a pin is click the provided tip information will expand right along the pin. Right now the size of the expanded block can only be manipulated by [CSS Styling](http://www.w3.org/Style/CSS/Overview.en.html).
 
@@ -40,7 +40,7 @@ $params = [
 
 $pi = new PinnedImage($params);
 ```
-Check Parameters.md for more information.
+Check [Parameters Documentation](Parameters.md) for more information.
 
 To change the sliding behaviour you can also set the `loadOrientation` parameter which will allow you to change from which direction the tip block will slide from.
 
