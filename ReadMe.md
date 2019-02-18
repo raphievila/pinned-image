@@ -12,11 +12,11 @@
 
 ## Summary
 
-`PinnedImage` purpose is to create a more friendly responisive image mapping simulating a pinned map mechanism, but with any image. My main goal is to add functionalities and capabilities, but for now, will do basic functionalities.
+`PinnedImage` purpose is to create a more friendly and responisive image mapping simulating a pinned map mechanism but with any image. My main goal is to add functionalities and capabilities, but for now, will do basic functionalities.
 
-I'm still debating if should implement JavaScript for interaction and animation, for the moment, all animations will be handle for Cascade Stylesheet methods and rules, and interactions through JavaScript.
+I'm still debating if should implement JavaScript for interaction and animation, for the moment, all animations will be handle using Cascade Stylesheet methods and rules, and interactions through JavaScript.
 
-If JavaScript is disable a legend will be added under the **`.pinned-container`** DOM division. My suggestion would be for you to set the container inside a container you can control and won't break your template's look when on mobile between the, legend will be posted between a `noscript` tag.
+If JavaScript is disable a legend will be added under the **`.pinned-container`** DOM division. My suggestion would be for you to set the container inside a container you can control and won't break your template's look specially when on mobile, legend will be posted between a `noscript` tag unless it is forced to show up always.
 
 ```html
 <div id="myPinnedImage" class="pinned-container">...</div>
@@ -84,7 +84,7 @@ Not all paremeters are required except: `id, tip, x and y`. The value type is ex
 ]
 ```
 
-The `JSON` should be an array list with each pin as objects ***(key => value)*** structure.
+The `JSON` should be an array list with each pin item as objects ***(key => value)*** structure.
 
 ## Using PinnedImage Class (PHP)
 
