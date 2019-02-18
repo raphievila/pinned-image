@@ -3,6 +3,7 @@
 - [Summary](#summary)
   - [Note For Developers](#note-for-developers)
 - [Basic Functionality](#basic-functionality)
+- [Implementation](#implementation)
 - [Using PinnedImage Class (PHP)](#using-pinnedimage-class-php)
   - [Required Parameters](#required-parameters)
   - [Renderign as HTML](#renderign-as-html)
@@ -37,6 +38,10 @@ To manipulate or customize the styling, you require to have Ruby and Sass instal
 ```shell
 $ cd /your-project-location/composer require raphievila/pinned-image
 ```
+
+Also, if you use the PinnedImage object this render the HTML with [Bootstrap](https://getbootstrap.com) classes if you would like to implement it or already implemented on your project. If so you are required by Bootstrap to use [jQuery](https://jquery.com) and [Popper](https://popper.js.org).
+
+I tried keep the use of JavaScript to minimum to provide you with a light nicely formatted experience that is mobile and desktop friendly. But this should not stop you of letting your creativity run wild. The code is not intrusive which is made in purpose to be used as a bootstrap that you can manipulate at your own taste.
 
 ## Basic Functionality
 
@@ -85,6 +90,37 @@ Not all paremeters are required except: `id, tip, x and y`. The value type is ex
 ```
 
 The `JSON` should be an array list with each pin item as objects ***(key => value)*** structure.
+
+## Implementation
+To use `PinnedImage` with your website you need to include the following into the `head` tag of your HTML project:
+```html
+<link href="location/to/you/css/dir/pinned-image.css" rel="stylesheet" type="text/css" />
+```
+
+The any where inside the `body` tag, it is recommended at the very end right before the closing '&lt;/body&gt;` tag:
+```html
+<script type="text/javascript" src="location/of/your/script/library/pinned-image.js"></script>
+```
+
+If this has been implemented properly your code should look something like this:
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pinned Image Home Page</title>
+    <link href="location/to/you/css/dir/pinned-image.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+    <!-- your template goes here -->
+
+    <script type="text/javascript" src="location/of/your/script/library/pinned-image.js"></script>
+</body>
+</html>
+```
 
 ## Using PinnedImage Class (PHP)
 

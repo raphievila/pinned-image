@@ -1,6 +1,6 @@
 {
     "name": "raphievila/pinned-image",
-    "description": "A new advance image mapping system that allows to pin an images with animated help tips by user interaction",
+    "description": "A new advance image mapping system that allows to pin an image with animated help tips by user interaction",
     "type": "library",
     "require": {
         "raphievila/utils": "dev-master",
