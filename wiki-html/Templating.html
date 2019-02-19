@@ -1,12 +1,19 @@
 <!DOCTYPE html>
-    <html>
+<html>
     <head>
         <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
         <title>PinnedImage Templates<!-- omit in toc --></title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
-        <link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css"
+            integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y"
+            crossorigin="anonymous">
+        <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+        <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+        <link
+            href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css"
+            rel="stylesheet" type="text/css">
         <style>
 .task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
 </style>
@@ -17,67 +24,81 @@
                 line-height: 1.6;
             }
         </style>
-        
-        <script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
     </head>
     <body>
         <h1 id="pinnedimage-templates---omit-in-toc">PinnedImage Templates<!-- omit in toc --></h1>
-<ul>
-<li><a href="#summary">Summary</a></li>
-<li><a href="#default-template">Default Template</a></li>
-<li><a href="#full-template">Full Template</a>
-<ul>
-<li><a href="#top-load">Top Load</a></li>
-<li><a href="#right-load">Right Load</a></li>
-<li><a href="#left-load">Left Load</a></li>
-</ul>
-</li>
-</ul>
-<h2 id="summary">Summary</h2>
-<p>Your pinned image can have different templates:</p>
-<ol>
-<li>Default</li>
-<li>Full Template
-<ol>
-<li>Bottom Load</li>
-<li>Top Load</li>
-<li>Left Load</li>
-<li>Right Load</li>
-</ol>
-</li>
-</ol>
-<p>Depending what you are trying to accomplish any of these templates might be handy to you.</p>
-<h2 id="default-template">Default Template</h2>
-<p>To use the default template you do not need to do anything, this would be the default state of the rendering.</p>
-<p>The default templates shows pins on top of your image depending of the cooridnates provided on the pin list JSON file. See the <a href="http://ReadMe.md">ReadMe.md</a> file for more information.</p>
-<p>When a pin is click the provided tip information will expand right along the pin. Right now the size of the expanded block can only be manipulated by <a href="http://www.w3.org/Style/CSS/Overview.en.html">CSS Styling</a>.</p>
-<p><strong>Note</strong>: In the future I will add color themes, for now you need to style the following elements with a CSS file.</p>
-<h2 id="full-template">Full Template</h2>
-<p>The full template is a mobile friendly version. Instead of the tip block expanding close to the pin, the block will slide out from the bottom, in its default state.</p>
-<p>To activate this configuration you only need to set the <code>containerClass</code> parameter when calling the <code>PinnedImage</code> object.</p>
-<pre><code class="language-php"><div>$params = [
+        <ul>
+            <li><a href="#summary">Summary</a></li>
+            <li><a href="#default-template">Default Template</a></li>
+            <li><a href="#full-template">Full Template</a>
+                <ul>
+                    <li><a href="#top-load">Top Load</a></li>
+                    <li><a href="#right-load">Right Load</a></li>
+                    <li><a href="#left-load">Left Load</a></li>
+                </ul>
+            </li>
+        </ul>
+        <h2 id="summary">Summary</h2>
+        <p>Your pinned image can have different templates:</p>
+        <ol>
+            <li>Default</li>
+            <li>Full Template
+                <ol>
+                    <li>Bottom Load</li>
+                    <li>Top Load</li>
+                    <li>Left Load</li>
+                    <li>Right Load</li>
+                </ol>
+            </li>
+        </ol>
+        <p>Depending what you are trying to accomplish any of these templates
+            might be handy to you.</p>
+        <h2 id="default-template">Default Template</h2>
+        <p>To use the default template you do not need to do anything, this
+            would be the default state of the rendering.</p>
+        <p>The default templates shows pins on top of your image depending of
+            the cooridnates provided on the pin list JSON file. See the <a
+                href="http://ReadMe.md">ReadMe.md</a> file for more information.</p>
+        <p>When a pin is click the provided tip information will expand right
+            along the pin. Right now the size of the expanded block can only be
+            manipulated by <a
+                href="http://www.w3.org/Style/CSS/Overview.en.html">CSS Styling</a>.</p>
+        <p><strong>Note</strong>: In the future I will add color themes, for now
+            you need to style the following elements with a CSS file.</p>
+        <h2 id="full-template">Full Template</h2>
+        <p>The full template is a mobile friendly version. Instead of the tip
+            block expanding close to the pin, the block will slide out from the
+            bottom, in its default state.</p>
+        <p>To activate this configuration you only need to set the <code>containerClass</code>
+            parameter when calling the <code>PinnedImage</code> object.</p>
+        <pre><code class="language-php"><div>$params = [
 	<span class="hljs-string">"containerClass"</span> =&gt; <span class="hljs-string">"pinned-container-full"</span>
 ]
 
 $pi = <span class="hljs-keyword">new</span> PinnedImage($params);
 </div></code></pre>
-<p>Check <a href="http://Parameters.md">Parameters.md</a> for more information.</p>
-<p>To change the sliding behaviour you can also set the <code>loadOrientation</code> parameter which will allow you to change from which direction the tip block will slide from.</p>
-<h3 id="top-load">Top Load</h3>
-<pre><code class="language-php"><div>$params  = [
+        <p>Check <a href="http://Parameters.md">Parameters.md</a> for more
+            information.</p>
+        <p>To change the sliding behaviour you can also set the <code>loadOrientation</code>
+            parameter which will allow you to change from which direction the
+            tip block will slide from.</p>
+        <h3 id="top-load">Top Load</h3>
+        <pre><code class="language-php"><div>$params  = [
 	<span class="hljs-string">'loadOrientation'</span> =&gt; <span class="hljs-string">'topload'</span>
 ];
 </div></code></pre>
-<h3 id="right-load">Right Load</h3>
-<pre><code class="language-php"><div>$params  = [
+        <h3 id="right-load">Right Load</h3>
+        <pre><code class="language-php"><div>$params  = [
 	<span class="hljs-string">'loadOrientation'</span> =&gt; <span class="hljs-string">'rightload'</span>
 ];
 </div></code></pre>
-<h3 id="left-load">Left Load</h3>
-<pre><code class="language-php"><div>$params  = [
+        <h3 id="left-load">Left Load</h3>
+        <pre><code class="language-php"><div>$params  = [
 	<span class="hljs-string">'loadOrientation'</span> =&gt; <span class="hljs-string">'bottomload'</span>
 ];
 </div></code></pre>
 
     </body>
-    </html>
+</html>

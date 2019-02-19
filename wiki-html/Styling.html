@@ -1,12 +1,19 @@
 <!DOCTYPE html>
-    <html>
+<html>
     <head>
         <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
         <title>Styling PinnedImage <!-- omit in toc --></title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
-        <link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css"
+            integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y"
+            crossorigin="anonymous">
+        <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+        <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+        <link
+            href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css"
+            rel="stylesheet" type="text/css">
         <style>
 .task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
 </style>
@@ -17,36 +24,49 @@
                 line-height: 1.6;
             }
         </style>
-        
-        <script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
     </head>
     <body>
         <h1 id="styling-pinnedimage----omit-in-toc">Styling PinnedImage <!-- omit in toc --></h1>
-<ul>
-<li><a href="#summary">Summary</a></li>
-<li><a href="#recommendation">Recommendation</a></li>
-<li><a href="#pinnedimage-css-structure">PinnedImage CSS Structure</a>
-<ul>
-<li><a href="#default-structure">Default Structure</a></li>
-<li><a href="#full-template-structure">Full Template Structure</a></li>
-</ul>
-</li>
-</ul>
-<h1 id="summary">Summary</h1>
-<p>PinnedImage main css file is located under your Composer <code>/vendor/</code> directory under:</p>
-<pre><code class="language-shell"><div><span class="hljs-meta">$</span><span class="bash"> &gt; ./vendor/raphievila/pinned-image/src/assets/styles/css/pinned-image.css</span>
+        <ul>
+            <li><a href="#summary">Summary</a></li>
+            <li><a href="#recommendation">Recommendation</a></li>
+            <li><a href="#pinnedimage-css-structure">PinnedImage CSS Structure</a>
+                <ul>
+                    <li><a href="#default-structure">Default Structure</a></li>
+                    <li><a href="#full-template-structure">Full Template
+                            Structure</a></li>
+                </ul>
+            </li>
+        </ul>
+        <h1 id="summary">Summary</h1>
+        <p>PinnedImage main css file is located under your Composer <code>/vendor/</code>
+            directory under:</p>
+        <pre><code class="language-shell"><div><span class="hljs-meta">$</span><span class="bash"> &gt; ./vendor/raphievila/pinned-image/src/assets/styles/css/pinned-image.css</span>
 </div></code></pre>
-<p>But, if you want to manipulate this file I recommend to use <a href="https://sass-lang.com/">Sass</a> a <code>CSS</code> extension language, which requires <a href="https://www.ruby-lang.org/en/">Ruby</a> programming language installed on your development environment.</p>
-<p>The <code>Sass</code> file is located:</p>
-<pre><code class="language-shell"><div><span class="hljs-meta">$</span><span class="bash"> &gt; ./vendor/raphievila/pinned-image/src/assets/styles/scss/pinned-image.scss</span>
+        <p>But, if you want to manipulate this file I recommend to use <a
+                href="https://sass-lang.com/">Sass</a> a <code>CSS</code>
+            extension language, which requires <a
+                href="https://www.ruby-lang.org/en/">Ruby</a> programming
+            language installed on your development environment.</p>
+        <p>The <code>Sass</code> file is located:</p>
+        <pre><code class="language-shell"><div><span class="hljs-meta">$</span><span class="bash"> &gt; ./vendor/raphievila/pinned-image/src/assets/styles/scss/pinned-image.scss</span>
 </div></code></pre>
-<p>When modifying remember to render the <code>SCSS</code> file by running the next command on your terminal or PowerShell:</p>
-<pre><code class="language-shell"><div><span class="hljs-meta">$</span><span class="bash"> &gt; ./vendor/raphievila/pinned-image/src/assets/styles/ sass --watch scss:css</span>
+        <p>When modifying remember to render the <code>SCSS</code> file by
+            running the next command on your terminal or PowerShell:</p>
+        <pre><code class="language-shell"><div><span class="hljs-meta">$</span><span class="bash"> &gt; ./vendor/raphievila/pinned-image/src/assets/styles/ sass --watch scss:css</span>
 </div></code></pre>
-<p>As previously stated, directory location depends in your directory structure and where the <code>pinned-image</code> directory is located. When deploying to your production site you can set your FTP Client to ignore the <code>scss</code> directory.</p>
-<h1 id="recommendation">Recommendation</h1>
-<p>The Styling of this code is not intrusive and can be overrided by an external css file as well, just make sure the custom styling file is place below the <code>pinned-image.css</code> so it takes precedence.</p>
-<pre><code class="language-html"><div><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+        <p>As previously stated, directory location depends in your directory
+            structure and where the <code>pinned-image</code> directory is
+            located. When deploying to your production site you can set your FTP
+            Client to ignore the <code>scss</code> directory.</p>
+        <h1 id="recommendation">Recommendation</h1>
+        <p>The Styling of this code is not intrusive and can be overrided by an
+            external css file as well, just make sure the custom styling file is
+            place below the <code>pinned-image.css</code> so it takes
+            precedence.</p>
+        <pre><code class="language-html"><div><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
 	<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
@@ -59,10 +79,10 @@
 <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span> ...
 </div></code></pre>
-<h1 id="pinnedimage-css-structure">PinnedImage CSS Structure</h1>
-<h2 id="default-structure">Default Structure</h2>
-<p>The default CSS structure for the PinnedImage object is as follow</p>
-<pre><code><div>div.pinned-container
+        <h1 id="pinnedimage-css-structure">PinnedImage CSS Structure</h1>
+        <h2 id="default-structure">Default Structure</h2>
+        <p>The default CSS structure for the PinnedImage object is as follow</p>
+        <pre><code><div>div.pinned-container
 |----&gt;img.pinned-image
 |----&gt;div.pinned-point //each pin
      |----&gt;a.pinned-point-label
@@ -72,9 +92,11 @@
 		       |----&gt;h3.pinned-point-title
 			   |----&gt;p.pinned-point-banner
 </div></code></pre>
-<h2 id="full-template-structure">Full Template Structure</h2>
-<p>The full template changes how the objects are located inside the main container, because in this case, the tips will slide from the image sides instead next to the pin.</p>
-<pre><code><div>div.pinned-container-full
+        <h2 id="full-template-structure">Full Template Structure</h2>
+        <p>The full template changes how the objects are located inside the main
+            container, because in this case, the tips will slide from the image
+            sides instead next to the pin.</p>
+        <pre><code><div>div.pinned-container-full
 |----&gt;img.pinned-image
 |----&gt;a.pinned-point-label
 	|----&gt;span
@@ -83,7 +105,9 @@
 		|----&gt;h3.pinned-point-title
 		|----&gt;p.pinned-point-banner
 </div></code></pre>
-<p>Notice that the pins are no longer enclosed under the container <code>.pinned-point</code>, each element float freely inside the main container <code>.pinned-container-full</code>.</p>
+        <p>Notice that the pins are no longer enclosed under the container
+            <code>.pinned-point</code>, each element float freely inside the
+            main container <code>.pinned-container-full</code>.</p>
 
     </body>
-    </html>
+</html>

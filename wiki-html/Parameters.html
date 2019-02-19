@@ -1,12 +1,19 @@
 <!DOCTYPE html>
-    <html>
+<html>
     <head>
         <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
         <title>Parameters Configurations <!-- omit in toc --></title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
-        <link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css"
+            integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y"
+            crossorigin="anonymous">
+        <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+        <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+        <link
+            href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css"
+            rel="stylesheet" type="text/css">
         <style>
 .task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
 </style>
@@ -17,227 +24,248 @@
                 line-height: 1.6;
             }
         </style>
-        
-        <script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
     </head>
     <body>
-        <h1 id="parameters-configurations----omit-in-toc">Parameters Configurations <!-- omit in toc --></h1>
-<ul>
-<li><a href="#parameters-for-pinnedimage-class">Parameters for <code>PinnedImage</code> Class</a>
-<ul>
-<li><a href="#required-parameters">Required Parameters</a></li>
-<li><a href="#container-modifiers">Container Modifiers</a></li>
-<li><a href="#full-template-options">Full Template Options</a></li>
-<li><a href="#no-script-options--legend">No Script Options / Legend</a></li>
-<li><a href="#custom-pin-list-json-file">Custom Pin List JSON File</a></li>
-<li><a href="#to-load-parameters">To Load Parameters</a>
-<ul>
-<li><a href="#method-one">Method One</a></li>
-<li><a href="#method-two">Method Two</a></li>
-</ul>
-</li>
-<li><a href="#for-debugging">For Debugging</a></li>
-</ul>
-</li>
-<li><a href="#parameters-for-pin-list-json-file">Parameters for Pin List JSON File</a>
-<ul>
-<li><a href="#required-parameters-1">Required Parameters</a></li>
-<li><a href="#optional-parameters">Optional Parameters</a></li>
-<li><a href="#pin-list-json-example">Pin List JSON Example</a></li>
-</ul>
-</li>
-</ul>
-<hr>
-<h1 id="parameters-for-pinnedimage-class">Parameters for <code>PinnedImage</code> Class</h1>
-<h2 id="required-parameters">Required Parameters</h2>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">key</th>
-<th style="text-align:center">value format</th>
-<th style="text-align:center">default</th>
-<th style="text-align:left">options</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>containerID</code></td>
-<td style="text-align:center">String</td>
-<td style="text-align:center">PinnedImage</td>
-<td style="text-align:left">ID of container - modify if multiple containers are used</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>imageURL</code></td>
-<td style="text-align:center">String</td>
-<td style="text-align:center">null</td>
-<td style="text-align:left">Images url is required</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>imageALT</code></td>
-<td style="text-align:center">Number</td>
-<td style="text-align:center">null</td>
-<td style="text-align:left">Required by Screen Readers</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h2 id="container-modifiers">Container Modifiers</h2>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">key</th>
-<th style="text-align:center">value format</th>
-<th style="text-align:center">default</th>
-<th style="text-align:left">options</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>containerClass</code></td>
-<td style="text-align:center">String</td>
-<td style="text-align:center">pinned-container</td>
-<td style="text-align:left"><code>pinned-container-full</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>containerRatio</code></td>
-<td style="text-align:center">Number</td>
-<td style="text-align:center">169</td>
-<td style="text-align:left"><code>32, 43, 169, 1610, 189, 215, 219</code></td>
-</tr>
-</tbody>
-</table>
-<p>Container ratios are based on most popular standard ratios example:</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">ratio</th>
-<th style="text-align:left">format</th>
-<th style="text-align:center">use</th>
-<th style="text-align:left">Example of Use</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>3:2</code></td>
-<td style="text-align:left">Landscape</td>
-<td style="text-align:center">32</td>
-<td style="text-align:left">Surface, Macbook Pro</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>4:3</code></td>
-<td style="text-align:left">Standard</td>
-<td style="text-align:center">43</td>
-<td style="text-align:left">Monitors, Old TVs</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>16:9</code></td>
-<td style="text-align:left">Widescreen</td>
-<td style="text-align:center">169</td>
-<td style="text-align:left">Monitors, Most HDTVs and Flat Screens</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>18:9</code></td>
-<td style="text-align:left">Wide Angle</td>
-<td style="text-align:center">189</td>
-<td style="text-align:left">Samsung S8, S9, Note 8, Note 9 and iPhone X</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>21:9</code></td>
-<td style="text-align:left">Extra Wide</td>
-<td style="text-align:center">219</td>
-<td style="text-align:left">Curved Monitors</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p>To use your custom ratio, check <a href="Styling.md">Styling PinnedImages</a>. Also available:</p>
-<ul>
-<li>5:4 (54)</li>
-<li>16:10 (1610)</li>
-<li>21:5 (215)</li>
-</ul>
-<p>For the moment only landscape orientation. I might add portrait orientation if requested.</p>
-<hr>
-<h2 id="full-template-options">Full Template Options</h2>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">key</th>
-<th style="text-align:left">value format</th>
-<th style="text-align:left">default</th>
-<th style="text-align:left">options</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>loadOrientation</code></td>
-<td style="text-align:left">String</td>
-<td style="text-align:left">bottomload</td>
-<td style="text-align:left"><code>topload, leftload, rightload</code></td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h2 id="no-script-options--legend">No Script Options / Legend</h2>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">key</th>
-<th style="text-align:left">value format</th>
-<th style="text-align:left">default</th>
-<th style="text-align:left">options</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>ignoreNoScript</code></td>
-<td style="text-align:left">Boolean</td>
-<td style="text-align:left"><code>false</code></td>
-<td style="text-align:left">set to <code>true</code> to completely remove &lt;noscript/&gt; tag and its content.</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>forceLegend</code></td>
-<td style="text-align:left">Boolean</td>
-<td style="text-align:left"><code>false</code></td>
-<td style="text-align:left">set to <code>true</code> to always show the legend, <code>ignoreNoScript</code> has to stay <code>false</code> for this to work.</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h2 id="custom-pin-list-json-file">Custom Pin List JSON File</h2>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">key</th>
-<th style="text-align:left">value format</th>
-<th style="text-align:left">default</th>
-<th style="text-align:left">options</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>myCoords</code></td>
-<td style="text-align:left">URL</td>
-<td style="text-align:left">null</td>
-<td style="text-align:left">To use different pin list this have to point to a properly formatted <a href="https://json.org">JSON</a> file</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>ignoreNoScript</code></td>
-<td style="text-align:left">Boolean</td>
-<td style="text-align:left"><code>false</code></td>
-<td style="text-align:left"><code>true</code>, 1 - To remove noscript option from the rendering output</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p>When left blank, the class will use the default pin list JSON file located on</p>
-<pre><code class="language-shell"><div><span class="hljs-meta">$</span><span class="bash"> &gt; .../raphievila/pinned-images/src/assets/scripts/coords.json</span>
+        <h1 id="parameters-configurations----omit-in-toc">Parameters
+            Configurations <!-- omit in toc --></h1>
+        <ul>
+            <li><a href="#parameters-for-pinnedimage-class">Parameters for
+                    <code>PinnedImage</code> Class</a>
+                <ul>
+                    <li><a href="#required-parameters">Required Parameters</a></li>
+                    <li><a href="#container-modifiers">Container Modifiers</a></li>
+                    <li><a href="#full-template-options">Full Template Options</a></li>
+                    <li><a href="#no-script-options--legend">No Script Options /
+                            Legend</a></li>
+                    <li><a href="#custom-pin-list-json-file">Custom Pin List
+                            JSON File</a></li>
+                    <li><a href="#to-load-parameters">To Load Parameters</a>
+                        <ul>
+                            <li><a href="#method-one">Method One</a></li>
+                            <li><a href="#method-two">Method Two</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#for-debugging">For Debugging</a></li>
+                </ul>
+            </li>
+            <li><a href="#parameters-for-pin-list-json-file">Parameters for Pin
+                    List JSON File</a>
+                <ul>
+                    <li><a href="#required-parameters-1">Required Parameters</a></li>
+                    <li><a href="#optional-parameters">Optional Parameters</a></li>
+                    <li><a href="#pin-list-json-example">Pin List JSON Example</a></li>
+                </ul>
+            </li>
+        </ul>
+        <hr>
+        <h1 id="parameters-for-pinnedimage-class">Parameters for <code>PinnedImage</code>
+            Class</h1>
+        <h2 id="required-parameters">Required Parameters</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th style="text-align:left">key</th>
+                    <th style="text-align:center">value format</th>
+                    <th style="text-align:center">default</th>
+                    <th style="text-align:left">options</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="text-align:left"><code>containerID</code></td>
+                    <td style="text-align:center">String</td>
+                    <td style="text-align:center">PinnedImage</td>
+                    <td style="text-align:left">ID of container - modify if
+                        multiple containers are used</td>
+                </tr>
+                <tr>
+                    <td style="text-align:left"><code>imageURL</code></td>
+                    <td style="text-align:center">String</td>
+                    <td style="text-align:center">null</td>
+                    <td style="text-align:left">Images url is required</td>
+                </tr>
+                <tr>
+                    <td style="text-align:left"><code>imageALT</code></td>
+                    <td style="text-align:center">Number</td>
+                    <td style="text-align:center">null</td>
+                    <td style="text-align:left">Required by Screen Readers</td>
+                </tr>
+            </tbody>
+        </table>
+        <hr>
+        <h2 id="container-modifiers">Container Modifiers</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th style="text-align:left">key</th>
+                    <th style="text-align:center">value format</th>
+                    <th style="text-align:center">default</th>
+                    <th style="text-align:left">options</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="text-align:left"><code>containerClass</code></td>
+                    <td style="text-align:center">String</td>
+                    <td style="text-align:center">pinned-container</td>
+                    <td style="text-align:left"><code>pinned-container-full</code></td>
+                </tr>
+                <tr>
+                    <td style="text-align:left"><code>containerRatio</code></td>
+                    <td style="text-align:center">Number</td>
+                    <td style="text-align:center">169</td>
+                    <td style="text-align:left"><code>32, 43, 169, 1610, 189,
+                            215, 219</code></td>
+                </tr>
+            </tbody>
+        </table>
+        <p>Container ratios are based on most popular standard ratios example:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th style="text-align:left">ratio</th>
+                    <th style="text-align:left">format</th>
+                    <th style="text-align:center">use</th>
+                    <th style="text-align:left">Example of Use</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="text-align:left"><code>3:2</code></td>
+                    <td style="text-align:left">Landscape</td>
+                    <td style="text-align:center">32</td>
+                    <td style="text-align:left">Surface, Macbook Pro</td>
+                </tr>
+                <tr>
+                    <td style="text-align:left"><code>4:3</code></td>
+                    <td style="text-align:left">Standard</td>
+                    <td style="text-align:center">43</td>
+                    <td style="text-align:left">Monitors, Old TVs</td>
+                </tr>
+                <tr>
+                    <td style="text-align:left"><code>16:9</code></td>
+                    <td style="text-align:left">Widescreen</td>
+                    <td style="text-align:center">169</td>
+                    <td style="text-align:left">Monitors, Most HDTVs and Flat
+                        Screens</td>
+                </tr>
+                <tr>
+                    <td style="text-align:left"><code>18:9</code></td>
+                    <td style="text-align:left">Wide Angle</td>
+                    <td style="text-align:center">189</td>
+                    <td style="text-align:left">Samsung S8, S9, Note 8, Note 9
+                        and iPhone X</td>
+                </tr>
+                <tr>
+                    <td style="text-align:left"><code>21:9</code></td>
+                    <td style="text-align:left">Extra Wide</td>
+                    <td style="text-align:center">219</td>
+                    <td style="text-align:left">Curved Monitors</td>
+                </tr>
+            </tbody>
+        </table>
+        <hr>
+        <p>To use your custom ratio, check <a href="Styling.md">Styling
+                PinnedImages</a>. Also available:</p>
+        <ul>
+            <li>5:4 (54)</li>
+            <li>16:10 (1610)</li>
+            <li>21:5 (215)</li>
+        </ul>
+        <p>For the moment only landscape orientation. I might add portrait
+            orientation if requested.</p>
+        <hr>
+        <h2 id="full-template-options">Full Template Options</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th style="text-align:left">key</th>
+                    <th style="text-align:left">value format</th>
+                    <th style="text-align:left">default</th>
+                    <th style="text-align:left">options</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="text-align:left"><code>loadOrientation</code></td>
+                    <td style="text-align:left">String</td>
+                    <td style="text-align:left">bottomload</td>
+                    <td style="text-align:left"><code>topload, leftload,
+                            rightload</code></td>
+                </tr>
+            </tbody>
+        </table>
+        <hr>
+        <h2 id="no-script-options--legend">No Script Options / Legend</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th style="text-align:left">key</th>
+                    <th style="text-align:left">value format</th>
+                    <th style="text-align:left">default</th>
+                    <th style="text-align:left">options</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="text-align:left"><code>ignoreNoScript</code></td>
+                    <td style="text-align:left">Boolean</td>
+                    <td style="text-align:left"><code>false</code></td>
+                    <td style="text-align:left">set to <code>true</code> to
+                        completely remove &lt;noscript/&gt; tag and its content.</td>
+                </tr>
+                <tr>
+                    <td style="text-align:left"><code>forceLegend</code></td>
+                    <td style="text-align:left">Boolean</td>
+                    <td style="text-align:left"><code>false</code></td>
+                    <td style="text-align:left">set to <code>true</code> to
+                        always show the legend, <code>ignoreNoScript</code> has
+                        to stay <code>false</code> for this to work.</td>
+                </tr>
+            </tbody>
+        </table>
+        <hr>
+        <h2 id="custom-pin-list-json-file">Custom Pin List JSON File</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th style="text-align:left">key</th>
+                    <th style="text-align:left">value format</th>
+                    <th style="text-align:left">default</th>
+                    <th style="text-align:left">options</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="text-align:left"><code>myCoords</code></td>
+                    <td style="text-align:left">URL</td>
+                    <td style="text-align:left">null</td>
+                    <td style="text-align:left">To use different pin list this
+                        have to point to a properly formatted <a
+                            href="https://json.org">JSON</a> file</td>
+                </tr>
+                <tr>
+                    <td style="text-align:left"><code>ignoreNoScript</code></td>
+                    <td style="text-align:left">Boolean</td>
+                    <td style="text-align:left"><code>false</code></td>
+                    <td style="text-align:left"><code>true</code>, 1 - To remove
+                        noscript option from the rendering output</td>
+                </tr>
+            </tbody>
+        </table>
+        <hr>
+        <p>When left blank, the class will use the default pin list JSON file
+            located on</p>
+        <pre><code class="language-shell"><div><span class="hljs-meta">$</span><span class="bash"> &gt; .../raphievila/pinned-images/src/assets/scripts/coords.json</span>
 </div></code></pre>
-<p>The above depends where your Composer files are located.</p>
-<h2 id="to-load-parameters">To Load Parameters</h2>
-<p>To load parameters to render <code>PinnedImage::render</code> method you can do this in two different way:</p>
-<h3 id="method-one">Method One</h3>
-<pre><code class="language-php"><div><span class="hljs-keyword">require</span> <span class="hljs-string">'your-composer-vendor-location/vendor/autoload.php'</span>;
+        <p>The above depends where your Composer files are located.</p>
+        <h2 id="to-load-parameters">To Load Parameters</h2>
+        <p>To load parameters to render <code>PinnedImage::render</code> method
+            you can do this in two different way:</p>
+        <h3 id="method-one">Method One</h3>
+        <pre><code class="language-php"><div><span class="hljs-keyword">require</span> <span class="hljs-string">'your-composer-vendor-location/vendor/autoload.php'</span>;
 <span class="hljs-keyword">use</span> <span class="hljs-title">raphievila</span>\<span class="hljs-title">ImageTools</span>\<span class="hljs-title">PinnedImage</span>;
 
 <span class="hljs-comment">//Creating parameters array, if you use old version of PHP</span>
@@ -251,8 +279,8 @@ $params = [
 <span class="hljs-comment">//Loading parameters and creating object</span>
 $pi = <span class="hljs-keyword">new</span> PinnedImage($params);
 </div></code></pre>
-<h3 id="method-two">Method Two</h3>
-<pre><code class="language-php"><div><span class="hljs-keyword">require</span> <span class="hljs-string">'your-composer-vendor-location/vendor/autoload.php'</span>;
+        <h3 id="method-two">Method Two</h3>
+        <pre><code class="language-php"><div><span class="hljs-keyword">require</span> <span class="hljs-string">'your-composer-vendor-location/vendor/autoload.php'</span>;
 <span class="hljs-keyword">use</span> <span class="hljs-title">raphievila</span>\<span class="hljs-title">ImageTools</span>\<span class="hljs-title">PinnedImage</span>;
 $pi = <span class="hljs-keyword">new</span> PinnedImage();
 
@@ -270,82 +298,96 @@ $pi-&gt;reload($params);
 
 <span class="hljs-keyword">echo</span> $pi-&gt;render();
 </div></code></pre>
-<h2 id="for-debugging">For Debugging</h2>
-<p>To make sure or test the parameters set are being processed correctly use <code>PinnedImage::check_loaded_parameters</code> method.</p>
-<pre><code class="language-php"><div>var_dump($pi-&gt;check_loaded_parameters());
+        <h2 id="for-debugging">For Debugging</h2>
+        <p>To make sure or test the parameters set are being processed correctly
+            use <code>PinnedImage::check_loaded_parameters</code> method.</p>
+        <pre><code class="language-php"><div>var_dump($pi-&gt;check_loaded_parameters());
 </div></code></pre>
-<p>Need help? <a href="mailto:rvila@revolutionvisualarts.com">Contact me here</a></p>
-<h1 id="parameters-for-pin-list-json-file">Parameters for Pin List JSON File</h1>
-<p><code>JSON</code> file require to be in proper formatting or it will not be parsed. For more information check <a href="http://json.org/">JSON official website</a>.</p>
-<h2 id="required-parameters-1">Required Parameters</h2>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">key</th>
-<th style="text-align:center">value format</th>
-<th style="text-align:left">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>id</code></td>
-<td style="text-align:center">String</td>
-<td style="text-align:left">Pin unique id</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>tip</code></td>
-<td style="text-align:center">String</td>
-<td style="text-align:left">Required by Screen Readers</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>x</code></td>
-<td style="text-align:center">Number</td>
-<td style="text-align:left">Horizontal origin location (Left to Right)</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>y</code></td>
-<td style="text-align:center">Number</td>
-<td style="text-align:left">Vertial origin location (Top to Bottom)</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h2 id="optional-parameters">Optional Parameters</h2>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">key</th>
-<th style="text-align:center">value format</th>
-<th style="text-align:left">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>class</code></td>
-<td style="text-align:center">String</td>
-<td style="text-align:left">Available to allow custom styling using <a href="http://www.w3.org/Style/CSS/Overview.en.html">CSS</a></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>label</code></td>
-<td style="text-align:center">String</td>
-<td style="text-align:left">Label text, number or image url, soon will support images</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>title</code></td>
-<td style="text-align:center">String</td>
-<td style="text-align:left">Title for the tip</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>uri</code></td>
-<td style="text-align:center">URL</td>
-<td style="text-align:left">If set the tip will show a button or link pointing to this url</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p>Other optional parameters might be added in the future for more customizations and icons. If you would like to provide icon fonts that could be distributed with this plug-in contact me by <a href="mailto:rvila@revolutionvisualarts.com">email</a>.</p>
-<h2 id="pin-list-json-example">Pin List JSON Example</h2>
-<pre><code class="language-json"><div>[
+        <p>Need help? <a href="mailto:rvila@revolutionvisualarts.com">Contact me
+                here</a></p>
+        <h1 id="parameters-for-pin-list-json-file">Parameters for Pin List JSON
+            File</h1>
+        <p><code>JSON</code> file require to be in proper formatting or it will
+            not be parsed. For more information check <a
+                href="http://json.org/">JSON official website</a>.</p>
+        <h2 id="required-parameters-1">Required Parameters</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th style="text-align:left">key</th>
+                    <th style="text-align:center">value format</th>
+                    <th style="text-align:left">description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="text-align:left"><code>id</code></td>
+                    <td style="text-align:center">String</td>
+                    <td style="text-align:left">Pin unique id</td>
+                </tr>
+                <tr>
+                    <td style="text-align:left"><code>tip</code></td>
+                    <td style="text-align:center">String</td>
+                    <td style="text-align:left">Required by Screen Readers</td>
+                </tr>
+                <tr>
+                    <td style="text-align:left"><code>x</code></td>
+                    <td style="text-align:center">Number</td>
+                    <td style="text-align:left">Horizontal origin location (Left
+                        to Right)</td>
+                </tr>
+                <tr>
+                    <td style="text-align:left"><code>y</code></td>
+                    <td style="text-align:center">Number</td>
+                    <td style="text-align:left">Vertial origin location (Top to
+                        Bottom)</td>
+                </tr>
+            </tbody>
+        </table>
+        <hr>
+        <h2 id="optional-parameters">Optional Parameters</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th style="text-align:left">key</th>
+                    <th style="text-align:center">value format</th>
+                    <th style="text-align:left">description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="text-align:left"><code>class</code></td>
+                    <td style="text-align:center">String</td>
+                    <td style="text-align:left">Available to allow custom
+                        styling using <a
+                            href="http://www.w3.org/Style/CSS/Overview.en.html">CSS</a></td>
+                </tr>
+                <tr>
+                    <td style="text-align:left"><code>label</code></td>
+                    <td style="text-align:center">String</td>
+                    <td style="text-align:left">Label text, number or image url,
+                        soon will support images</td>
+                </tr>
+                <tr>
+                    <td style="text-align:left"><code>title</code></td>
+                    <td style="text-align:center">String</td>
+                    <td style="text-align:left">Title for the tip</td>
+                </tr>
+                <tr>
+                    <td style="text-align:left"><code>uri</code></td>
+                    <td style="text-align:center">URL</td>
+                    <td style="text-align:left">If set the tip will show a
+                        button or link pointing to this url</td>
+                </tr>
+            </tbody>
+        </table>
+        <hr>
+        <p>Other optional parameters might be added in the future for more
+            customizations and icons. If you would like to provide icon fonts
+            that could be distributed with this plug-in contact me by <a
+                href="mailto:rvila@revolutionvisualarts.com">email</a>.</p>
+        <h2 id="pin-list-json-example">Pin List JSON Example</h2>
+        <pre><code class="language-json"><div>[
     {
         <span class="hljs-attr">"id"</span>: <span class="hljs-string">"PointOne"</span>,
         <span class="hljs-attr">"label"</span>: <span class="hljs-number">1</span>,
@@ -370,4 +412,4 @@ $pi-&gt;reload($params);
 </div></code></pre>
 
     </body>
-    </html>
+</html>
