@@ -169,7 +169,8 @@
         z-index: 4; }
         .pinned-container-full > .pinned-point-tip .closeBtn > span {
           display: block;
-          transform-origin: 7px;
+          transform-origin: 5px;
+          margin-top: 3px;
           content: '';
           width: 20px;
           height: 4px;
