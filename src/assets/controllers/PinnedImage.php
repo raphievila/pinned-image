@@ -26,6 +26,7 @@ class PinnedImage
     //Image Modifiers
     private static $imageURL = '';
     private static $imageALT = 'PinnedImage &copy;2019 Revolution Visual Arts';
+    private static $imageBlur = false;
     //Data Modifiers
     private static $ignoreNoScript = false;
     private static $forceLegend = false;
@@ -40,6 +41,7 @@ class PinnedImage
         'forceLegend',
         'ignoreNoScript',
         'imageURL',
+        'imageBlur',
         'imageALT',
         'loadOrientation',
         'myCoords',
@@ -65,6 +67,7 @@ class PinnedImage
             'forceLegend' => false,
             'ignoreNoScript' => false,
             'imageURL' => false,
+            'imageBlur' => false,
             'imageALT' => 'PinnedImage &copy;2019 Revolution Visual Arts',
             'loadOrientation' => false,
             'myCoords' => false,
@@ -224,6 +227,7 @@ class PinnedImage
         $ratio = (is_numeric(self::$containerRatio)) ? ' r'.self::$containerRatio : '';
         $load = (is_string(self::$loadOrientation)) ? ',data-template:'.htmlspecialchars(self::$loadOrientation) : '';
         $img = $x->img(self::$imageURL, 'class:pinned-image,alt:'.$x->processText(self::$imageALT));
+        $img .= (self::$imageBlur) ? $x->img(self::$imageBlur, 'class:pinned-image-blur,alt:'.$x->processText(self::$imageALT)) : '';
 
         //GET RENDERED PINS;
         $pins = self::_render_pins_as_html();

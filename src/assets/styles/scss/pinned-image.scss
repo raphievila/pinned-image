@@ -19,6 +19,16 @@
         max-height: 100%;
         z-index: 1;
         margin: auto;
+
+        &-blur {
+            @extend .pinned-image;
+            transition: opacity 0.5s ease-in-out;
+            opacity: 0;
+
+            &.show {
+                opacity: 1;
+            }
+        }
     }
 
     &-point {
@@ -195,10 +205,11 @@
                         position: absolute;
                         transition: bottom 0.3s ease-in-out;
                         width: auto;
+                        max-height: 500px;
                         min-height: 200px;
                         top: auto;
                         right: 20px;
-                        bottom: -100%;
+                        bottom: -500px;
                         left: 20px;
                         border-radius: 10px 10px 0 0;
                         overflow: hidden;

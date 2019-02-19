@@ -35,8 +35,9 @@ If JavaScript is disable a legend will be added under the **`.pinned-container`*
 
 To manipulate or customize the styling, you require to have Ruby and Sass installed and initialized on your developing system. Also this plug-in requires raphievila/xtags and raphievila/utils which are going to be installed when your run:
 
-```shell
-$ cd /your-project-location/composer require raphievila/pinned-image
+```s
+$ cd /your-project-location/
+$ /your-project-location/composer require raphievila/pinned-image
 ```
 
 Also, if you use the PinnedImage object this render the HTML with [Bootstrap](https://getbootstrap.com) classes if you would like to implement it or already implemented on your project. If so you are required by Bootstrap to use [jQuery](https://jquery.com) and [Popper](https://popper.js.org).
@@ -151,7 +152,11 @@ require 'pinned-image/src/assets/controllers/PinnedImage.php';
 use raphievila\ImageTools\PinnedImage;
 $pi = new PinnedImage();
 ```
-Just remember that this object require 2 additional objects [raphievila\xtags](https://github.com/raphievila/xtags) and [raphievila\utils](https://github.com/raphievila/utils).
+Just remember that this object require 2 additional objects [raphievila\xtags](https://github.com/raphievila/xtags) and [raphievila\utils](https://github.com/raphievila/utils), which will be installed when you run the command:
+
+```s
+$ > composer require raphievila/pinned-image
+```
 
 ### Required Parameters
 

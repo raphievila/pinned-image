@@ -2,7 +2,7 @@
  * @author Rafael Vila <rvila@revolutionvisualarts.com>
  * @version 1.0.1v
  */
-.pinned-image {
+.pinned-image, .pinned-image-blur {
   position: absolute;
   display: block;
   top: 0;
@@ -15,6 +15,11 @@
   max-height: 100%;
   z-index: 1;
   margin: auto; }
+  .pinned-image-blur {
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0; }
+    .pinned-image-blur.show {
+      opacity: 1; }
 .pinned-point, .pinned-point-center, .pinned-point-center-left, .pinned-point-center-right, .pinned-point-top, .pinned-point-top-right, .pinned-point-bottom, .pinned-point-bottom-right {
   position: absolute;
   display: block;
@@ -148,10 +153,11 @@
       position: absolute;
       transition: bottom 0.3s ease-in-out;
       width: auto;
+      max-height: 500px;
       min-height: 200px;
       top: auto;
       right: 20px;
-      bottom: -100%;
+      bottom: -500px;
       left: 20px;
       border-radius: 10px 10px 0 0;
       overflow: hidden; }
@@ -186,48 +192,54 @@
         bottom: 0; }
     .pinned-container-full[data-template="topload"] > .pinned-point-tip {
       position: absolute;
-      transition: top 0.3s ease-in-out;
+      transition: margin-top 0.5s ease-in-out;
       width: auto;
       height: auto;
+      max-height: 500px;
       min-height: 200px;
-      top: -100%;
+      top: 0;
       right: 20px;
       bottom: auto;
       left: 20px;
-      margin: 0;
+      margin-top: -500px;
       border-radius: 0 0 10px 10px; }
       .pinned-container-full[data-template="topload"] > .pinned-point-tip.expanded {
-        top: 0; }
+        transition: margin-top 0.5s ease-in-out;
+        margin-top: 0; }
     .pinned-container-full[data-template="leftload"] > .pinned-point-tip {
       position: absolute;
-      transition: left 0.3s ease-in-out, top 0.3s ease-in-out, bottom 0.3s ease-in-out;
+      transition: margin-left 0.5s ease-in;
       width: 50%;
+      max-width: 500px;
       height: auto;
-      top: 20px;
+      max-height: 100%;
+      top: 50%;
       right: auto;
-      bottom: 20px;
-      left: -100%;
-      border-radius: 0 10px 10px 0; }
+      bottom: 0;
+      left: 0;
+      border-radius: 0 10px 10px 0;
+      transform: translateY(-50%);
+      margin-left: -500px; }
       .pinned-container-full[data-template="leftload"] > .pinned-point-tip.expanded {
-        transition: left 0.3s ease-in-out, top 0.3s ease-in-out, bottom 0.3s ease-in-out;
-        top: 10px;
-        bottom: 10px;
-        left: 0; }
+        transition: margin-left 0.5s ease-out;
+        margin-left: 0; }
     .pinned-container-full[data-template="rightload"] > .pinned-point-tip {
       position: absolute;
-      transition: right 0.3s ease-in-out, top 0.3s ease-in-out, bottom 0.3s ease-in-out;
+      transition: margin-right 0.5s ease-in;
       width: 50%;
+      max-width: 500px;
       height: auto;
-      top: 20px;
-      right: -100%;
-      bottom: 20px;
+      max-height: 100%;
+      top: 50%;
+      right: 0;
+      bottom: auto;
       left: auto;
-      border-radius: 10px 0 0 10px; }
+      border-radius: 10px 0 0 10px;
+      transform: translateY(-50%);
+      margin-right: -500px; }
       .pinned-container-full[data-template="rightload"] > .pinned-point-tip.expanded {
-        transition: right 0.3s ease-in-out, top 0.3s ease-in-out, bottom 0.3s ease-in-out;
-        top: 10px;
-        bottom: 10px;
-        right: 0; }
+        transition: margin-right 0.5s ease-out;
+        margin-right: -0px; }
     .pinned-container-full.r215 {
       padding: 23.8%; }
     .pinned-container-full.r219 {

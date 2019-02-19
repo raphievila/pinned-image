@@ -11,9 +11,11 @@ var coords,
 
 contract = function (e) {
     var me = jQuery(e),
-        closing = me.parent();
+        closing = me.parent(),
+        container = closing.parent('.pinned-container,.pinned-container-full');
 
     closing.removeClass('expanded').removeClass('pinned-focus');
+    container.find('.pinned-image-blur').removeClass('show');
 }
 
 loadCoords = function () {
@@ -34,25 +36,39 @@ loadCoords = function () {
 setListener = function (me) {
     var pin = me,
         label = pin.children('.pinned-point-label'),
-        tip = pin.children('.pinned-point-tip');
+        tip = pin.children('.pinned-point-tip')
+        myParent = me.parent('.pinned-container,.pinned-container-full');
 
     label.on('click', function () {
-        jQuery('.pinned-point-tip').not(tip).removeClass('expanded');
-        jQuery('.pinned-point').not(me).removeClass('pinned-focus');
+        myParent.find('.pinned-point-tip').not(tip).removeClass('expanded');
+        myParent.find('.pinned-point').not(me).removeClass('pinned-focus');
         me.toggleClass('pinned-focus');
         tip.toggleClass('expanded');
+
+        if (me.hasClass('pinned-focus')) {
+            myParent.find('.pinned-image-blur').addClass('show');
+        } else {
+            myParent.find('.pinned-image-blur').removeClass('show');
+        }
     });
 }
 
 setListenerFull = function (label) {
     var id = label.attr('rel'),
-        tip = jQuery('#' + id);
+        tip = jQuery('#' + id),
+        myParent = tip.parent('.pinned-container,.pinned-container-full');
 
     tip.append('<a class="closeBtn" onclick="contract(this);"><span class="closeOne"></span><span class="closeTwo"></span></a>');
 
     label.on('click', function () {
         jQuery('.pinned-point-tip').not(tip).removeClass('expanded').removeClass('pinned-focus');
         tip.toggleClass('pinned-focus').toggleClass('expanded');
+
+        if (tip.hasClass('pinned-focus')) {
+            myParent.find('.pinned-image-blur').addClass('show');
+        } else {
+            myParent.find('.pinned-image-blur').removeClass('show');
+        }
     });
 }
 
