@@ -205,7 +205,8 @@ class PinnedImage
         $externalContent = (isset($info->external)) ? self::__process_external_content($info->external) : '';
 
         //Setting .pinned-point-banner and it's content
-        $sticker = ($tipText) ? $x->p($tipText, 'class:pinned-point-banner') : '';
+        $content = ($tipText) ? $x->p($tipText, 'class:pinned-point-banner') : '';
+        $content .= $externalContent;
 
         //Set ID
         $tipID = ($fullTemplate) ? ',id:'.$setID : '';
@@ -215,8 +216,8 @@ class PinnedImage
             ? $x->a(htmlspecialchars($info->url), 'class:pinned-point-button btn btn-primary')
             : '';
 
-        //Creating content for .pinned-point-sticker
-        $tip = $x->div($x->div($title.$sticker.$button, 'class:pinned-point-tip-sticker'), 'class:pinned-point-tip'.$tipID);
+        //Creating content for .pinned-point-content
+        $tip = $x->div($x->div($title.$content.$button, 'class:pinned-point-tip-content'), 'class:pinned-point-tip'.$tipID);
 
         return (!$fullTemplate)
             ? $x->div($labelXML.$tip, 'class:pinned-point,id:'.$x->processText($setID).$coords)

@@ -126,7 +126,7 @@
       opacity: 1;
       width: 400px;
       height: 200px; }
-    .pinned-point-tip-sticker {
+    .pinned-point-tip-sticker, .pinned-point-tip-content {
       width: 400px;
       height: auto; }
   .pinned-point-center {
@@ -213,7 +213,7 @@
             transform: rotate(45deg); }
           .pinned-container-full > .pinned-point-tip .closeBtn > span.closeTwo {
             transform: rotate(-45deg); }
-      .pinned-container-full > .pinned-point-tip > .pinned-point-tip-sticker {
+      .pinned-container-full > .pinned-point-tip > .pinned-point-tip-sticker, .pinned-container-full > .pinned-point-tip > .pinned-point-tip-content {
         width: 100%; }
       .pinned-container-full > .pinned-point-tip.expanded {
         bottom: 0; }

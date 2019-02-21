@@ -154,7 +154,7 @@
                 height: 200px;
             }
 
-            &-sticker {
+            &-sticker, &-content {
                 width: 400px;
                 height: auto;
             }
@@ -274,8 +274,11 @@
                             }
                         }
 
-                        & > .pinned-point-tip-sticker {
-                            width: 100%;
+                        & > .pinned-point-tip {
+                            &-sticker, &-content {
+                                width: 100%;
+                            }
+                            
                         }
 
                         &.expanded {

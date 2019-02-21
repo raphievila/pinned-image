@@ -20,6 +20,14 @@
         "uri": "#",
         "class": "pinned-point-label-text",
         "x": 57.9,
-        "y": 8
+        "y": 8,
+        "external": {
+            "list": [
+                "List Item One",
+                "<a href=\"https:\/\/revolutionvisualarts.com\">Site</a>",
+                "<a href=\"https:\/\/designersgate.com\">Blog</a>",
+                "<a href=\"https:\/\/facebook.com/DesignersGate\">Facebook</a>"
+            ]
+        }
     }
 ]

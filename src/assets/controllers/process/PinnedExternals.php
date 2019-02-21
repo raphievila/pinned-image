@@ -85,9 +85,9 @@ class PinnedExternals
         }
 
         foreach ($data as $text) {
-            $list[] = preg_replace('/(.*?)([\s]?on[\w]+=".*?"|[\s]?href="javascript\:.*?")+(.*?)/', '$1$3', strip_tags($text, 'h1 h2 h3 h4 script'));
+            $list[] = preg_replace('/(.*?)([\s]?on[\w]+=".*?"|[\s]?href="javascript\:.*?")+(.*?)/', '$1$3', strip_tags($text, 'h1,h2,h3,h4,script'));
         }
 
-        return (count($list) > 0) ? $x->ol(join("\r", $list), ['class' => 'pinned-point-external-list']) : false;
+        return (count($list) > 0) ? $x->ol($x - li(join("</li>\r<li>", $list)), ['class' => 'pinned-point-external-list']) : false;
     }
 }
