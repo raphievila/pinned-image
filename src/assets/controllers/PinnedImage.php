@@ -2,8 +2,6 @@
 
 namespace raphievila;
 
-require 'process/PinnedExternals.php';
-
 /*
  * @author 	Rafael Vila <rvila@revolutionvisualarts.com>
  *
