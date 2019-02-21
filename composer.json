@@ -3,7 +3,7 @@
     "description": "A new advance image mapping system that allows to pin an image with animated help tips by user interaction",
     "type": "library",
     "require": {
-        "raphievila/utils": "dev-master",
+        "raphievila/utils": "dev-master || >=1.0.1",
         "php": "^5.3 || ^7.0"
     },
     "license": "MIT",
@@ -15,8 +15,8 @@
     ],
     "autoload": {
         "psr-4": {
-            "PinnedImage\\": "src/assets/controllers",
-            "raphievila\\PinnedImage\\": ""
+            "RaphieVila\\PinnedImage\\": "src/assets/controllers",
+            "RaphieVila\\Process\\": "src/assets/controllers/process"
         },
         "classmap": [
             "src/assets/controllers"

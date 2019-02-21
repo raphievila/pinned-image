@@ -1,13 +1,11 @@
 <?php
 require __DIR__.'/../assets/inc/functions.php';
-if (COMPOSER_AUTOLOAD) {
-    require_once COMPOSER_AUTOLOAD;
-}
+require COMPOSER_AUTOLOAD;
 require __DIR__.'/../assets/controllers/PinnedImage.php';
 
 use xTags\xTags;
 use Utils\Utils;
-use raphievila\ImageTools\PinnedImage;
+use raphievila\PinnedImage;
 
 $x = new xTags();
 $u = new Utils();
@@ -52,7 +50,7 @@ $pi = new PinnedImage($params);
                 $u->echo_array($params);
                 echo '</div>';
 
-                echo $x->p('Notice the '.$x->code('forceLegend').' parameter has been set to -true- even though is showing a number 1, which is its normal behaviour, is still a boolean. When this parameter is set, the legend only shown when JavaScript is inactive will be force to display by removing the content from the '.$x->code('&lt;noscript/&gt;').' tag and placing in its own container with class '.$x->code('.pinned-legend').'.');
+                echo $x->blockquote('Notice the '.$x->code('forceLegend').' parameter has been set to -true- even though is showing a number 1, which is its normal behaviour, is still a boolean. When this parameter is set, the legend only shown when JavaScript is inactive will be force to display by removing the content from the '.$x->code('&lt;noscript/&gt;').' tag and placing in its own container with class '.$x->code('.pinned-legend').'.', array('class' => 'testing-array'));
 
                 echo '<div class="col-md-12 p-5">';
                 echo $x->h2('Pins Coordinates sent:');

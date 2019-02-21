@@ -1,6 +1,8 @@
 <?php
 
-namespace raphievila\ImageTools;
+namespace raphievila;
+
+require 'process/PinnedExternals.php';
 
 /*
  * @author 	Rafael Vila <rvila@revolutionvisualarts.com>
@@ -36,6 +38,7 @@ namespace raphievila\ImageTools;
 
 use xTags\xTags;
 use Utils\Utils;
+use raphievila\process\PinnedExternals;
 
 class PinnedImage
 {
@@ -141,12 +144,85 @@ class PinnedImage
 
     public static function check_loaded_parameters()
     {
-        $paramsLoaded = [];
+        $paramsLoaded = array();
         foreach (self::$allowed as $key) {
             $paramsLoaded[$key] = self::${$key};
         }
 
         return (object) $paramsLoaded;
+    }
+
+    private static function _generate_label($info, $setID, $coords, $icon, $fullTemplate)
+    {
+        $x = new xTags();
+
+        //Preparing Icon Attribute
+        $iconAttr = ($icon) ? ',style:background-image..url(\''.$x->processText(htmlspecialchars($icon)).'\');' : '';
+
+        //Setting up Pin Label
+        $extraClass = (isset($info->class)) ? ' '.htmlspecialchars($info->class) : '';
+        $setCoords = ($fullTemplate) ? $coords : '';
+        $labelRel = ($fullTemplate) ? ',rel:'.$setID : '';
+        $label = htmlspecialchars($info->label);
+        $labelXML = $x->a($x->span($label), 'class:pinned-point-label'.$extraClass.$labelRel.$setCoords.$iconAttr);
+
+        return (object) ['label' => $label, 'html' => $labelXML];
+    }
+
+    private static function __process_external_content($dataset)
+    {
+        if (!self::$u->isMap($dataset)) {
+            throw new \Exception('The external set has to be an object', 500);
+        }
+
+        $x = new xTags();
+        $pe = new PinnedExternals();
+        $set = array();
+
+        foreach ($dataset as $type => $data) {
+            switch ($type) {
+                case 'list':
+                    $set[] = $pe::__prepare_external_list($data);
+                    break;
+                case 'curl':
+                    $set[] = $pe::__prepare_external_curl($data);
+                    // no break
+                default:
+                    //HTML FILE HAS TO BE LOCAL
+                    $set[] = $pe::__prepare_external_html($data);
+            }
+        }
+
+        return (count($set) > 0) ? $x->div(join("\r", $set), 'class:pinned-point-external') : false;
+    }
+
+    private static function _finalizing_pin($info, $tipText, $setID, $coords, $labelXML, $fullTemplate)
+    {
+        $x = new xTags();
+
+        //filtering title
+        $title = (isset($info->title)) ? $x->h3(htmlspecialchars($info->title), 'class:pinned-point-title') : '';
+
+        //Entering external html content by setting "external": {"html": "HTML content url"}
+        $externalContent = (isset($info->external)) ? self::__process_external_content($info->external) : '';
+
+        //Setting .pinned-point-banner and it's content
+        $sticker = ($tipText) ? $x->p($tipText, 'class:pinned-point-banner') : '';
+
+        //Set ID
+        $tipID = ($fullTemplate) ? ',id:'.$setID : '';
+
+        //Create Button
+        $button = (isset($info->url) && filter_var($info->url, FILTER_VALIDATE_URL))
+            ? $x->a(htmlspecialchars($info->url), 'class:pinned-point-button btn btn-primary')
+            : '';
+
+        //Creating content for .pinned-point-sticker
+        $tip = $x->div($x->div($title.$sticker.$button, 'class:pinned-point-tip-sticker'), 'class:pinned-point-tip'.$tipID);
+
+        return (!$fullTemplate)
+            ? $x->div($labelXML.$tip, 'class:pinned-point,id:'.$x->processText($setID).$coords)
+            : $labelXML.$tip;
     }
 
     private static function _render_pins_as_html()
@@ -168,34 +244,26 @@ class PinnedImage
             //Coordinate attributes
             $coords = ',data-x:'.htmlspecialchars($info->x).'%,data-y:'.htmlspecialchars($info->y).'%';
 
+            //Setting up Icon
+            $icon = (isset($info->iconUrl)) ? $info->iconUrl : null;
+
             //Setting up Pin Label
-            $extraClass = (isset($info->class)) ? ' '.htmlspecialchars($info->class) : '';
-            $setCoords = ($fullTemplate) ? $coords : '';
-            $labelRel = ($fullTemplate) ? ',rel:'.$setID : '';
-            $label = htmlspecialchars($info->label);
-            $labelXML = $x->a($x->span($label), 'class:pinned-point-label'.$extraClass.$labelRel.$setCoords);
+            $labelSet = self::_generate_label($info, $setID, $coords, $icon, $fullTemplate);
+            $label = $labelSet->label;
+            $labelXML = $labelSet->html;
 
             //Setting Tip
             $tipText = (isset($info->tip)) ? htmlspecialchars($info->tip) : false;
 
-            //required value have to be set, if not new to throw exception
+            //required value have to be set, if not throw exception
             if (!$tipText) {
                 throw new \Exception('Parameter <code>tip</code> not set on Pin List. Tip explanation have to be set, check the Parameters documentation.', 500);
             }
 
-            $title = (isset($info->title)) ? $x->h3(htmlspecialchars($info->title), 'class:pinned-point-title') : '';
-            $sticker = ($tipText) ? $x->p($tipText, 'class:pinned-point-banner') : '';
-            $tipID = ($fullTemplate) ? ',id:'.$setID : '';
-            $button = (isset($info->url) && filter_var($info->url, FILTER_VALIDATE_URL))
-                ? $x->a(htmlspecialchars($info->url), 'class:pinned-point-button btn btn-primary')
-                : '';
-            $tip = $x->div($x->div($title.$sticker.$button, 'class:pinned-point-tip-sticker'), 'class:pinned-point-tip'.$tipID);
+            //Generating final pin HTML
+            $pin[] = self::_finalizing_pin($info, $tipText, $setID, $coords, $labelXML, $fullTemplate);
 
-            $pin[] = (!$fullTemplate)
-                ? $x->div($labelXML.$tip, 'class:pinned-point,id:'.$x->processText($setID).$coords)
-                : $labelXML.$tip;
-
-            self::$noscriptSet[$label] = $tipText;
+            self::$noscriptSet[$label] = (object) array('text' => $tipText, 'icon' => $icon);
         }
 
         return (count($pin) > 0) ? join("\r", $pin) : false;
@@ -204,6 +272,11 @@ class PinnedImage
     public static function no_script_object()
     {
         return self::$noscriptSet;
+    }
+
+    private static function _get_file_name($iconURL)
+    {
+        return preg_replace('/(.*?/)?([\w\d\-_]+\.\w{3,4})', '$2', $iconURL);
     }
 
     private static function __process_noscript_legend($containerID)
@@ -217,10 +290,12 @@ class PinnedImage
             throw new \Exception('List sent not properly formatted, make sure is a map or array', 500);
         }
 
-        foreach ($list as $label => $tip) {
+        foreach ($list as $label => $items) {
+            //Check if icon has been set
+            $icon = (isset($items->icon)) ? ': '.$x->img($items->icon, ['class' => 'pinned-legend-icon', 'alt' => self::_get_file_name($items->icon)]) : '';
             //Setting up flex items
-            $labelTag = $x->div($label, 'class:pinned-flex-item w5 text-center');
-            $tipTag = $x->div($tip, 'class:pinned-flex-item w95');
+            $labelTag = $x->div($label.$icon, 'class:pinned-flex-item w5 text-center');
+            $tipTag = $x->div($items->text, 'class:pinned-flex-item w95');
             //Setting up flex row
             $tipList[] = $x->div($labelTag.$tipTag, 'class:pinned-flex-row,');
         }

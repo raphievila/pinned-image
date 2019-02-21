@@ -125,12 +125,12 @@ If this has been implemented properly your code should look something like this:
 Also, you need to set two globals required by the `pinned-image.js` that are set to prepare for a coming Auto Load feature not yet implemented. Set these right before embedding the `pinned-image.js` as follow:
 
 ```html
-    <script type="text/javascript">
-        'use strict';
-        var AUTOLOAD = false,
-            MYCOORDS = false;
-    </script>
-    <script type="text/javascript" src="location/of/your/script/library/pinned-image.js"></script>
+<script type="text/javascript">
+    'use strict';
+    var AUTOLOAD = false,
+        MYCOORDS = false;
+</script>
+<script type="text/javascript" src="location/of/your/script/library/pinned-image.js"></script>
 ```
 **Note**: To avoid getting console errors and not wanting to set these globals all the time, you can add them as editable globals in the `pinned-image.js` file.
 
@@ -194,7 +194,7 @@ When rendered this tiny piece of code will be replaced with the following struct
     <img src="imageURL" alt="imageALT" class="pinned-image" />
 
     <!-- pin structure -->
-    <div id="json->id" class="pinned-point" data-x="json->x%" data-y="json->x%">
+    <div id="json->id" class="pinned-point" data-x="json->x%" data-y="json->y%">
         <a alt="json->label" class="pinned-point-label">
             <span>json->label</span>
         </a>
@@ -245,7 +245,7 @@ $pi = new PinnedImage($params);
 echo $pi->render();
 ```
 
-For now the containerClass parameter can only be `pinned-container` (default) or `pinned-container-full`. Only set this up for full template only. For more information see [Templating](https://github.com/raphievila/pinned-image/wiki/Templating).
+For now the containerClass parameter can only be `pinned-container` (default) or `pinned-container-full`. Only set this up for full template only. For more information see [Templating](https://github.com/raphievila/pinned-image/wiki/Templating.md).
 
 ## TODO
 Things I need to do and will be added shortly:
