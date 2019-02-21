@@ -33,6 +33,7 @@
 'use strict;'
 var coords,
     contract,
+    clearFocusState,
     loadCoords,
     setPoints,
     setListener,
@@ -139,6 +140,16 @@ fullSet = function (me) {
     });
 }
 
+clearFocusState = function (e, t) {
+    var me = jQuery(e.target),
+        container = jQuery(t);
+    if (me.hasClass('pinned-image-blur') && container.find('.pinned-focus').length > 0) {
+        container.find('.pinned-focus').removeClass('pinned-focus');
+        container.find('.expanded').removeClass('expanded');
+        container.find('.pinned-image-blur').removeClass('show');
+    }
+}
+
 setPoints = function () {
     var template = false;
 
@@ -157,4 +168,8 @@ jQuery(document).ready(function () {
     if (AUTOLOAD !== undefined && AUTOLOAD) {
         loadCoords();
     }
+
+    jQuery('.pinned-container').on('click', function (e) {
+        clearFocusState(e, this);
+    });
 });
