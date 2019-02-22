@@ -252,7 +252,7 @@ class PinnedImage
             $labelXML = $labelSet->html;
 
             //Setting Tip
-            $tipText = (isset($info->tip)) ? htmlspecialchars($info->tip) : false;
+            $tipText = (isset($info->tip)) ? nl2br(htmlspecialchars($info->tip)) : false;
 
             //required value have to be set, if not throw exception
             if (!$tipText) {
