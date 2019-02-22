@@ -213,7 +213,7 @@ class PinnedImage
 
         //Create Button
         $button = (isset($info->url) && filter_var($info->url, FILTER_VALIDATE_URL))
-            ? $x->a(htmlspecialchars($info->url), 'class:pinned-point-button btn btn-primary')
+            ? $x->a('More Information', 'class:pinned-point-button btn btn-primary,href:'.$x->processText(htmlspecialchars($info->url)))
             : '';
 
         //Creating content for .pinned-point-content
