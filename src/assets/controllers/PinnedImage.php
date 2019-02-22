@@ -199,7 +199,7 @@ class PinnedImage
         $x = new xTags();
 
         //filtering title
-        $title = (isset($info->title)) ? $x->h3(htmlspecialchars($info->title), 'class:pinned-point-title') : '';
+        $title = (isset($info->title)) ? $x->h3(nl2br(htmlspecialchars($info->title)), 'class:pinned-point-title') : '';
 
         //Entering external html content by setting "external": {"html": "HTML content url"}
         $externalContent = (isset($info->external)) ? self::__process_external_content($info->external) : '';
